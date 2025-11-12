@@ -1,0 +1,184 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: "Poppins", sans-serif;
+}
+
+body {
+  background: #f0f2f5;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.card {
+  display: flex;
+  width: 850px;
+  height: 520px;
+  background: #fff;
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+.left {
+  width: 40%;
+  background: linear-gradient(45deg, #065f46, #059669);
+  padding: 40px 30px;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  border-radius: 20px;
+  position: relative;
+}
+.left h1 {
+  font-size: 25px;
+  margin-bottom: 10px;
+}
+
+.left p {
+  font-size: 15px;
+  opacity: 0.9;
+  margin-bottom: 20px;
+}
+
+.btn-register {
+  background: transparent;
+  padding: 10px 26px;
+  border: 2px solid #fff;
+  border-radius: 12px;
+  cursor: pointer;
+}
+
+.btn-register a {
+  text-decoration: none;
+  color: #fff;
+  font-size: 16px;
+  transition: All 0.3s ease;
+}
+
+.btn-register a:hover {
+  letter-spacing: 2px;
+}
+
+.back-btn {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  color: #fff;
+  font-size: 18px;
+  transition: All 0.3s ease;
+}
+
+.back-btn:hover {
+  transform: translateY(-3px);
+}
+
+.right {
+  width: 60%;
+  align-self: center;
+  padding: 50px 70px;
+}
+
+.right h2 {
+  font-size: 32px;
+  margin-bottom: 25px;
+  color: #333;
+}
+
+.role-section {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin-bottom: 20px;
+  background: transparent;
+  border-radius: 15px;
+}
+
+.role-section input[type="radio"] {
+  display: none;
+}
+.role-section label {
+  display: flex;
+  justify-content: center;
+  padding: 10px 20px;
+  color: #065f46;
+  border-radius: 50px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.role-section input[type="radio"]:checked + label {
+  background: linear-gradient(45deg, #065f46, #059669);
+  width: 50%;
+  color: #fff;
+  border: none;
+}
+
+.form .field {
+  display: flex;
+  gap: 10px;
+}
+
+.form .field input {
+  width: 100%;
+  padding: 12px 40px 12px 12px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+form .field i {
+  align-self: center;
+  color: #065f46;
+}
+
+.form .company-field {
+  display: none;
+}
+
+.submit-btn {
+  margin-top: 20px;
+  width: 100%;
+  padding: 12px;
+  background: linear-gradient(45deg, #065f46, #059669);
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: all 0.3s ease;
+}
+
+.submit-btn:hover {
+  transform: translateY(-3px);
+}
+
+.socials {
+  position: absolute;
+  bottom: 40px;
+  display: flex;
+  gap: 15px;
+}
+
+.socials .button i {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 40px;
+  height: 40px;
+  font-size: 18px;
+  border: 1px solid white;
+  border-radius: 50%;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.socials .button i:hover {
+  transform: translateY(-5px);
+}
