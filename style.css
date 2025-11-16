@@ -81,7 +81,7 @@ header {
 }
 
 .hero {
-  background: url("image/bggg1.jpg") no-repeat center center/cover;
+  background: url("assets/image/bggg1.jpg") no-repeat center center/cover;
   min-height: 100vh;
   display: flex;
   align-items: center;
@@ -333,21 +333,21 @@ header {
 }
 
 .card-teal {
-  background: url("image/how-it\ work-1.jpg");
+  background: url("assets/image/how-it\ work-1.jpg");
 }
 .card-blue {
-  background: url("image/how-it\ work-2.jpg");
+  background: url("assets/image/how-it\ work-2.jpg");
 }
 .card-green {
-  background: url("image/how-it\ work-3.jpg");
+  background: url("assets/image/how-it\ work-3.jpg");
 }
 .card-yellow {
-  background: url("image/how-it\ work-4.jpg");
+  background: url("assets/image/how-it\ work-4.jpg");
 }
 
 /* awaeness hero */
 .awareness-hero {
-  background: url("image/bggg1.jpg") no-repeat center center/cover;
+  background: url("assets/image/bggg1.jpg") no-repeat center center/cover;
   min-height: 70vh;
   display: flex;
   align-items: center;
@@ -445,7 +445,7 @@ header {
 .slider-section {
   text-align: center;
   padding: 40px 0;
-  background: url(image/awareness_hero.png) no-repeat center center/cover;
+  background: url(assets/image/awareness_hero.png) no-repeat center center/cover;
   position: relative;
 }
 
@@ -618,7 +618,7 @@ header {
   justify-content: center;
   align-items: center;
   padding: 80px 10%;
-  background: url(image/recycle2.jpg) no-repeat center center/cover;
+  background: url(assets/image/recycle2.jpg) no-repeat center center/cover;
   position: relative;
 }
 
