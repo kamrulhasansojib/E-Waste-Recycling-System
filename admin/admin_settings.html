@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin - Change Password</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+    <link rel="stylesheet" href="../assets/css/global_admin.css" />
+  </head>
+  <body>
+    <div class="sidebar">
+      <div class="logo">
+        <i class="fas fa-recycle"></i>
+        <h2>E-TRIEVE</h2>
+        <span class="admin-badge">ADMIN PANEL</span>
+      </div>
+      <nav class="nav-menu">
+        <a href="admin_dashboard.html">
+          <i class="fas fa-home"></i>
+          <span>Dashboard</span>
+        </a>
+        <a href="users.html">
+          <i class="fas fa-users"></i>
+          <span>Users</span>
+        </a>
+        <a href="items.html">
+          <i class="fas fa-recycle"></i>
+          <span>E-Waste Items</span>
+        </a>
+        <a href="companies.html">
+          <i class="fas fa-building"></i>
+          <span>Companies</span>
+        </a>
+        <a href="admin_settings.html" class="active">
+          <i class="fas fa-cogs"></i>
+          <span>Settings</span>
+        </a>
+        <a href="#" class="logout-btn">
+          <i class="fas fa-sign-out-alt"></i>
+          <span>Logout</span>
+        </a>
+      </nav>
+    </div>
+
+    <div class="main">
+      <div class="topbar">
+        <div class="welcome-text">
+          <h1>Change Password</h1>
+          <p>Update your admin account password securely.</p>
+        </div>
+        <div class="topbar-icons">
+          <div class="user-profile">
+            <i class="fas fa-user-circle"></i>
+            <span>Admin</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="table-container" style="padding: 30px">
+        <form class="settings-form">
+          <div class="form-group">
+            <label for="currentPassword">Current Password</label>
+            <input
+              type="password"
+              id="currentPassword"
+              placeholder="Enter current password"
+            />
+          </div>
+          <div class="form-group">
+            <label for="newPassword">New Password</label>
+            <input
+              type="password"
+              id="newPassword"
+              placeholder="Enter new password"
+            />
+          </div>
+          <div class="form-group">
+            <label for="confirmPassword">Confirm New Password</label>
+            <input
+              type="password"
+              id="confirmPassword"
+              placeholder="Confirm new password"
+            />
+          </div>
+          <button type="submit" class="btn-export" style="margin-top: 10px">
+            <i class="fas fa-save"></i> Save Changes
+          </button>
+        </form>
+      </div>
+    </div>
+  </body>
+</html>
