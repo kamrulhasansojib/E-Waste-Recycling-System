@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin - Companies Page</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+    <link rel="stylesheet" href="global_admin.css" />
+  </head>
+  <body>
+    <div class="sidebar">
+      <div class="logo">
+        <i class="fas fa-recycle"></i>
+        <h2>E-TRIEVE</h2>
+        <span class="admin-badge">ADMIN PANEL</span>
+      </div>
+      <nav class="nav-menu">
+        <a href="admin_dashboard.html">
+          <i class="fas fa-home"></i>
+          <span>Dashboard</span>
+        </a>
+        <a href="users.html">
+          <i class="fas fa-users"></i>
+          <span>Users</span>
+        </a>
+        <a href="items.html">
+          <i class="fas fa-recycle"></i>
+          <span>E-Waste Items</span>
+        </a>
+        <a href="companies.html" class="active">
+          <i class="fas fa-building"></i>
+          <span>Companies</span>
+        </a>
+        <a href="admin_settings.html">
+          <i class="fas fa-cogs"></i>
+          <span>Settings</span>
+        </a>
+        <a href="#" class="logout-btn">
+          <i class="fas fa-sign-out-alt"></i>
+          <span>Logout</span>
+        </a>
+      </nav>
+    </div>
+
+    <div class="main">
+      <div class="topbar">
+        <div class="welcome-text">
+          <h1>All Companies</h1>
+          <p>Manage company data, pickups and total collected items.</p>
+        </div>
+        <div class="topbar-icons">
+          <div class="user-profile">
+            <i class="fas fa-user-circle"></i>
+            <span>Admin</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="table-container">
+        <div class="table-header">
+          <div class="table-title">
+            <i class="fas fa-building"></i>
+            <h2>Companies List</h2>
+          </div>
+
+          <div class="table-actions">
+            <div class="search-box">
+              <i class="fas fa-search"></i>
+              <input type="text" placeholder="Search companies..." />
+            </div>
+            <button class="btn-export">
+              <i class="fas fa-download"></i> Export
+            </button>
+          </div>
+        </div>
+
+        <table>
+          <thead>
+            <tr>
+              <th><i class="fas fa-building"></i> Company Name</th>
+              <th><i class="fas fa-envelope"></i> Email</th>
+              <th><i class="fas fa-phone"></i> Contact</th>
+              <th><i class="fas fa-recycle"></i> Total Picked Up</th>
+              <th><i class="fas fa-calendar-alt"></i> Joined Date</th>
+              <th><i class="fas fa-cog"></i> Actions</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <tr>
+              <td>GreenCycle Ltd</td>
+              <td>contact@greencycle.com</td>
+              <td>+880 1711-123456</td>
+              <td>38 pickups</td>
+              <td>2025-01-20</td>
+              <td class="btn-action">
+                <button class="action-btn btn-view">
+                  <i class="fas fa-eye"></i>
+                </button>
+                <button class="action-btn btn-edit">
+                  <i class="fas fa-pen"></i>
+                </button>
+                <button class="action-btn btn-delete">
+                  <i class="fas fa-trash"></i>
+                </button>
+              </td>
+            </tr>
+
+            <tr>
+              <td>EcoDrop Services</td>
+              <td>support@ecodrop.com</td>
+              <td>+880 1812-987654</td>
+              <td>52 pickups</td>
+              <td>2025-02-05</td>
+              <td class="btn-action">
+                <button class="action-btn btn-view">
+                  <i class="fas fa-eye"></i>
+                </button>
+                <button class="action-btn btn-edit">
+                  <i class="fas fa-pen"></i>
+                </button>
+                <button class="action-btn btn-delete">
+                  <i class="fas fa-trash"></i>
+                </button>
+              </td>
+            </tr>
+
+            <tr>
+              <td>Recycle Bangladesh</td>
+              <td>info@recyclebd.com</td>
+              <td>+880 1910-445566</td>
+              <td>27 pickups</td>
+              <td>2025-03-10</td>
+              <td class="btn-action">
+                <button class="action-btn btn-view">
+                  <i class="fas fa-eye"></i>
+                </button>
+                <button class="action-btn btn-edit">
+                  <i class="fas fa-pen"></i>
+                </button>
+                <button class="action-btn btn-delete">
+                  <i class="fas fa-trash"></i>
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </body>
+</html>
