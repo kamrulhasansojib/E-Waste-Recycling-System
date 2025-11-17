@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>User Dashboard - Nearby Companies</title>
+    <link rel="stylesheet" href="../assets/css/nearby_companies.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+  </head>
+  <body>
+    <div class="dashboard-container">
+      <nav class="sidebar">
+        <h2>Dashboard</h2>
+        <ul>
+          <li>
+            <a href="user_dashboard.html"
+              ><i class="fas fa-home"></i>Dashboard</a
+            >
+          </li>
+          <li>
+            <a href="requestform.html"
+              ><i class="fas fa-file-alt"></i>My Submissions</a
+            >
+          </li>
+          <li>
+            <a href="#" class="active"
+              ><i class="fas fa-building"></i>Nearby Companies</a
+            >
+          </li>
+          <li>
+            <a href="#"><i class="fas fa-sign-out-alt"></i>Logout</a>
+          </li>
+        </ul>
+      </nav>
+
+      <main class="main-content">
+        <h1>Nearby Companies</h1>
+
+        <input
+          type="text"
+          id="searchBar"
+          placeholder="Search companies..."
+          onkeyup="searchCompanies()"
+        />
+
+        <div id="companyList" class="company-list">
+          <div class="company-card">
+            <h3>GreenTech Recycling</h3>
+            <p>
+              <i class="fas fa-map-marker-alt"></i> Address: 123 Green Street,
+              Dhaka
+            </p>
+             <p><i class="fas fa-phone" style="color: #065f46;"></i> 0124778908</p>
+            <p>Motto: “Recycling Today for a Greener Tomorrow”</p>
+          </div>
+          <div class="company-card">
+            <h3>E-Waste Solutions Ltd.</h3>
+            <p>
+              <i class="fas fa-map-marker-alt"></i> Address: 45 Tech Park,
+              Chittagong
+            </p>
+             <p><i class="fas fa-phone" style="color: #065f46;"></i> 0124778908</p>
+            <p>Motto: “Safe Disposal, Smart Future”</p>
+          </div>
+          <div class="company-card">
+            <h3>Recycle Hub</h3>
+            <p>
+              <i class="fas fa-map-marker-alt"></i> Address: 78 Industrial Area,
+              Khulna
+            </p>
+             <p><i class="fas fa-phone" style="color: #065f46;"></i> 0124778908</p>
+            <p>Motto: “Connecting Communities Through Recycling”</p>
+          </div>
+          <div class="company-card">
+            <h3>Eco Waste Management</h3>
+            <p>
+              <i class="fas fa-map-marker-alt"></i> Address: 22 Central Road,
+              Sylhet
+            </p>
+            <p><i class="fas fa-phone" style="color: #065f46;"></i> 0124778908</p>
+            <p>
+              </i>Motto: “Eco-Friendly Solutions for
+              Every Home”
+            </p>
+          </div>
+        </div>
+      </main>
+    </div>
+  </body>
+</html>
