@@ -3,10 +3,158 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Company Dashboard - E-TRIEVE</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
     <link rel="stylesheet" href="../assets/css/compay_dashboard.css" />
   </head>
   <body>
-    <h1>hi</h1>
+    <div class="dashboard-container">
+      <aside class="sidebar">
+        <h2>E-TRIEVE</h2>
+        <ul>
+          <li>
+            <a href="#" class="active"><i class="fas fa-home"></i> Dashboard</a>
+          </li>
+          <li>
+            <a href="requests.html"><i class="fas fa-inbox"></i> Requests</a>
+          </li>
+          <li>
+            <a href="completed.html"
+              ><i class="fas fa-check-circle"></i> Completed</a
+            >
+          </li>
+
+          <li>
+            <a href="#"><i class="fas fa-sign-out-alt"></i> Logout</a>
+          </li>
+        </ul>
+      </aside>
+
+      <main class="main-content">
+        <div class="header">
+          <h1>Welcome, GreenTech Recycling</h1>
+          <div class="user-info">
+            <span>Admin</span>
+            <i class="fas fa-user-circle"></i>
+          </div>
+        </div>
+
+        <div class="stats-container">
+          <div class="stat-card">
+            <div class="stat-icon" style="background: #3498db">
+              <i class="fas fa-inbox"></i>
+            </div>
+            <div class="stat-info">
+              <h3>24</h3>
+              <p>Pending Requests</p>
+            </div>
+          </div>
+
+          <div class="stat-card">
+            <div class="stat-icon" style="background: #2ecc71">
+              <i class="fas fa-check-circle"></i>
+            </div>
+            <div class="stat-info">
+              <h3>156</h3>
+              <p>Completed Pickups</p>
+            </div>
+          </div>
+
+          <div class="stat-card">
+            <div class="stat-icon" style="background: #e74c3c">
+              <i class="fas fa-star"></i>
+            </div>
+            <div class="stat-info">
+              <h3>4.8</h3>
+              <p>Average Rating</p>
+            </div>
+          </div>
+        </div>
+        <div class="section">
+          <div class="section-header">
+            <h2>Recent Pickup Requests</h2>
+          </div>
+
+          <div class="table-container">
+            <table class="requests-table">
+              <thead>
+                <tr>
+                  <th>Request ID</th>
+                  <th>Customer Name</th>
+                  <th>Device Type</th>
+                  <th>Quantity</th>
+                  <th>Pickup Date</th>
+                  <th>Status</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>#REQ-001</td>
+                  <td>Ahmed Rahman</td>
+                  <td>Laptop</td>
+                  <td>2</td>
+                  <td>2025-11-20</td>
+                  <td><span class="status pending">Pending</span></td>
+                  <td>
+                    <button class="btn-accept">Accept</button>
+                    <button class="btn-reject">Reject</button>
+                  </td>
+                </tr>
+                <tr>
+                  <td>#REQ-002</td>
+                  <td>Fatima Akter</td>
+                  <td>Mobile</td>
+                  <td>5</td>
+                  <td>2025-11-18</td>
+                  <td><span class="status pending">Pending</span></td>
+                  <td>
+                    <button class="btn-accept">Accept</button>
+                    <button class="btn-reject">Reject</button>
+                  </td>
+                </tr>
+                <tr>
+                  <td>#REQ-003</td>
+                  <td>Karim Hassan</td>
+                  <td>TV</td>
+                  <td>1</td>
+                  <td>2025-11-19</td>
+                  <td><span class="status accepted">Accepted</span></td>
+                  <td>
+                    <button class="btn-view">View Details</button>
+                  </td>
+                </tr>
+                <tr>
+                  <td>#REQ-004</td>
+                  <td>Nadia Islam</td>
+                  <td>Fridge</td>
+                  <td>1</td>
+                  <td>2025-11-21</td>
+                  <td><span class="status pending">Pending</span></td>
+                  <td>
+                    <button class="btn-accept">Accept</button>
+                    <button class="btn-reject">Reject</button>
+                  </td>
+                </tr>
+                <tr>
+                  <td>#REQ-005</td>
+                  <td>Rahim Khan</td>
+                  <td>Laptop</td>
+                  <td>3</td>
+                  <td>2025-11-17</td>
+                  <td><span class="status completed">Completed</span></td>
+                  <td>
+                    <button class="btn-view">View Details</button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </main>
+    </div>
   </body>
 </html>

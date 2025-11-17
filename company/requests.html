@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Requests - E-TRIEVE</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+    <link rel="stylesheet" href="../assets/css/requests.css" />
+  </head>
+  <body>
+    <div class="dashboard-container">
+      <aside class="sidebar">
+        <h2>E-TRIEVE</h2>
+        <ul>
+          <li>
+            <a href="companydashboard.html"
+              ><i class="fas fa-home"></i> Dashboard</a
+            >
+          </li>
+          <li>
+            <a href="#" class="active"><i class="fas fa-inbox"></i> Requests</a>
+          </li>
+          <li>
+            <a href="completed.html"
+              ><i class="fas fa-check-circle"></i> Completed</a
+            >
+          </li>
+          <li>
+            <a href="#"><i class="fas fa-sign-out-alt"></i> Logout</a>
+          </li>
+        </ul>
+      </aside>
+
+      <main class="main-content">
+        <h1>Pickup Requests</h1>
+
+        <div class="search-filter-bar">
+          <div class="search-box">
+            <i class="fas fa-search"></i>
+            <input
+              type="text"
+              placeholder="Search by customer name or request ID..."
+            />
+          </div>
+          <select class="filter-select">
+            <option value="">All Status</option>
+            <option value="pending">Pending</option>
+            <option value="accepted">Accepted</option>
+          </select>
+          <select class="filter-select">
+            <option value="">All Devices</option>
+            <option value="laptop">Laptop</option>
+            <option value="mobile">Mobile</option>
+            <option value="tv">TV</option>
+            <option value="fridge">Fridge</option>
+          </select>
+        </div>
+
+        <div class="requests-grid">
+          <div class="request-card">
+            <div class="card-header">
+              <span class="request-id">#REQ-001</span>
+              <span class="status pending">Pending</span>
+            </div>
+            <div class="card-body">
+              <h3>Ahmed Rahman</h3>
+              <p><i class="fas fa-phone"></i> 01712345678</p>
+              <p>
+                <i class="fas fa-map-marker-alt"></i> House 12, Road 5,
+                Dhanmondi, Dhaka
+              </p>
+              <p><i class="fas fa-laptop"></i> Laptop - Qty: 2</p>
+              <p><i class="fas fa-calendar"></i> Nov 20, 2025</p>
+              <p><strong>Condition:</strong> Old</p>
+            </div>
+            <div class="card-actions">
+              <button class="btn-accept">
+                <i class="fas fa-check"></i> Accept
+              </button>
+              <button class="btn-reject">
+                <i class="fas fa-times"></i> Reject
+              </button>
+            </div>
+          </div>
+
+          <div class="request-card">
+            <div class="card-header">
+              <span class="request-id">#REQ-002</span>
+              <span class="status pending">Pending</span>
+            </div>
+            <div class="card-body">
+              <h3>Fatima Akter</h3>
+              <p><i class="fas fa-phone"></i> 01823456789</p>
+              <p>
+                <i class="fas fa-map-marker-alt"></i> Flat 3B, Gulshan Avenue,
+                Gulshan-1
+              </p>
+              <p><i class="fas fa-mobile-alt"></i> Mobile - Qty: 5</p>
+              <p><i class="fas fa-calendar"></i> Nov 18, 2025</p>
+              <p><strong>Condition:</strong> Broken</p>
+            </div>
+            <div class="card-actions">
+              <button class="btn-accept">
+                <i class="fas fa-check"></i> Accept
+              </button>
+              <button class="btn-reject">
+                <i class="fas fa-times"></i> Reject
+              </button>
+            </div>
+          </div>
+
+          <div class="request-card">
+            <div class="card-header">
+              <span class="request-id">#REQ-003</span>
+              <span class="status accepted">Accepted</span>
+            </div>
+            <div class="card-body">
+              <h3>Karim Hassan</h3>
+              <p><i class="fas fa-phone"></i> 01934567890</p>
+              <p>
+                <i class="fas fa-map-marker-alt"></i> 23 Banani C/A, Banani,
+                Dhaka
+              </p>
+              <p><i class="fas fa-tv"></i> TV - Qty: 1</p>
+              <p><i class="fas fa-calendar"></i> Nov 19, 2025</p>
+              <p><strong>Condition:</strong> Working</p>
+            </div>
+            <div class="card-actions">
+              <button class="btn-details">
+                <i class="fas fa-eye"></i> View Details
+              </button>
+            </div>
+          </div>
+
+          <div class="request-card">
+            <div class="card-header">
+              <span class="request-id">#REQ-004</span>
+              <span class="status pending">Pending</span>
+            </div>
+            <div class="card-body">
+              <h3>Nadia Islam</h3>
+              <p><i class="fas fa-phone"></i> 01645678901</p>
+              <p>
+                <i class="fas fa-map-marker-alt"></i> Plot 45, Bashundhara R/A,
+                Dhaka
+              </p>
+              <p><i class="fas fa-snowflake"></i> Fridge - Qty: 1</p>
+              <p><i class="fas fa-calendar"></i> Nov 21, 2025</p>
+              <p><strong>Condition:</strong> Broken</p>
+            </div>
+            <div class="card-actions">
+              <button class="btn-accept">
+                <i class="fas fa-check"></i> Accept
+              </button>
+              <button class="btn-reject">
+                <i class="fas fa-times"></i> Reject
+              </button>
+            </div>
+          </div>
+
+          <div class="request-card">
+            <div class="card-header">
+              <span class="request-id">#REQ-005</span>
+              <span class="status pending">Pending</span>
+            </div>
+            <div class="card-body">
+              <h3>Rahim Khan</h3>
+              <p><i class="fas fa-phone"></i> 01556789012</p>
+              <p>
+                <i class="fas fa-map-marker-alt"></i> 56 Mirpur DOHS, Mirpur,
+                Dhaka
+              </p>
+              <p><i class="fas fa-laptop"></i> Laptop - Qty: 3</p>
+              <p><i class="fas fa-calendar"></i> Nov 17, 2025</p>
+              <p><strong>Condition:</strong> Old</p>
+            </div>
+            <div class="card-actions">
+              <button class="btn-accept">
+                <i class="fas fa-check"></i> Accept
+              </button>
+              <button class="btn-reject">
+                <i class="fas fa-times"></i> Reject
+              </button>
+            </div>
+          </div>
+
+          <div class="request-card">
+            <div class="card-header">
+              <span class="request-id">#REQ-006</span>
+              <span class="status accepted">Accepted</span>
+            </div>
+            <div class="card-body">
+              <h3>Mim Begum</h3>
+              <p><i class="fas fa-phone"></i> 01767890123</p>
+              <p>
+                <i class="fas fa-map-marker-alt"></i> House 89, Road 11, Uttara,
+                Dhaka
+              </p>
+              <p><i class="fas fa-mobile-alt"></i> Mobile - Qty: 2</p>
+              <p><i class="fas fa-calendar"></i> Nov 22, 2025</p>
+              <p><strong>Condition:</strong> Working</p>
+            </div>
+            <div class="card-actions">
+              <button class="btn-details">
+                <i class="fas fa-eye"></i> View Details
+              </button>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+  </body>
+</html>
