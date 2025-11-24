@@ -182,3 +182,17 @@ form .field i {
 .socials .button i:hover {
   transform: translateY(-5px);
 }
+
+.success-msg {
+  color: #065f46;
+  text-align: center;
+  margin-top: 15px;
+  font-weight: 600;
+}
+
+.error-msg {
+  color: red;
+  text-align: center;
+  margin-top: 15px;
+  font-weight: 600;
+}

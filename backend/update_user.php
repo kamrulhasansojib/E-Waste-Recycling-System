@@ -56,5 +56,6 @@ if(isset($_POST['update_password'])){
 
     echo "<p class='success-msg'>Password updated successfully!</p>";
     exit;
+    $sojib = 8;
 }
 ?>

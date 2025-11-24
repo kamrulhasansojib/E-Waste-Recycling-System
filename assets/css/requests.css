@@ -16,65 +16,101 @@ body {
 }
 
 .sidebar {
-  width: 240px;
-  background: linear-gradient(45deg, #065f46, #059669);
-  color: white;
-  padding: 20px;
   position: fixed;
-  height: 100vh;
   left: 0;
   top: 0;
-  box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
-}
-
-.sidebar h2 {
-  font-size: 24px;
-  margin: 40px 0;
-  text-align: center;
+  width: 240px;
+  height: 100vh;
+  background: linear-gradient(45deg, #065f46, #059669);
   color: #fff;
-  letter-spacing: 2px;
-  font-weight: bold;
-}
-
-.sidebar ul {
-  list-style: none;
-}
-
-.sidebar ul li {
-  margin-bottom: 10px;
-}
-
-.sidebar ul li a {
   display: flex;
+  flex-direction: column;
   align-items: center;
-  gap: 12px;
-  color: #ecf0f1;
+  padding: 30px 0;
+  overflow-y: auto;
+  z-index: 1000;
+}
+
+.logo {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+  border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+}
+
+.logo i {
+  font-size: 40px;
+  margin-top: 12px;
+  color: #1bf0a9;
+}
+
+.logo h2 {
+  font-size: 26px;
+  letter-spacing: 3px;
+  font-weight: 700;
+  margin-bottom: 7px;
+  margin-top: 7px;
+}
+
+.admin-badge {
+  display: inline-block;
+  background: rgba(255, 255, 255, 0.2);
+  padding: 4px 12px;
+  border-radius: 12px;
+  font-size: 11px;
+  margin-top: 5px;
+  margin-bottom: 20px;
+}
+
+.sidebar nav {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  flex: 1;
+}
+
+.sidebar nav a {
   text-decoration: none;
-  padding: 15px 20px;
-  border-radius: 8px;
+  color: #fff;
+  font-weight: 500;
+  padding: 10px 20px;
+  border-radius: 6px;
   transition: all 0.3s ease;
+}
+
+.sidebar nav a:hover,
+.sidebar nav a.active {
+  background: #065f46;
+}
+
+.sidebar nav a i {
+  margin-right: 8px;
   font-size: 16px;
 }
 
-.sidebar ul li a i {
-  font-size: 18px;
+.back-btn {
+  margin-top: auto;
+  padding: 20px 0;
+  margin-bottom: 40px;
 }
 
-.sidebar ul li a:hover {
-  background: #065f46;
-  padding-left: 25px;
+.back-btn i {
+  color: #fff;
+  font-size: 22px;
+  transition: all 0.3s ease;
 }
 
-.sidebar ul li a.active {
-  background: #065f46;
-  font-weight: 600;
+.back-btn i:hover {
+  transform: translateY(-3px);
 }
 
 .main-content {
   margin-left: 240px;
   padding: 30px 40px;
   width: calc(100% - 240px);
-  background: #f5f5f5;
+  overflow-y: auto;
 }
 
 .main-content h1 {
@@ -85,54 +121,41 @@ body {
 
 .search-filter-bar {
   display: flex;
-  gap: 15px;
-  margin-bottom: 30px;
   flex-wrap: wrap;
-}
-
-.search-box {
-  flex: 1;
-  min-width: 250px;
-  position: relative;
-}
-
-.search-box i {
-  position: absolute;
-  left: 15px;
-  top: 50%;
-  transform: translateY(-50%);
-  color: #7f8c8d;
-}
-
-.search-box input {
-  width: 100%;
-  padding: 12px 15px 12px 45px;
-  border: 2px solid #e0e0e0;
-  border-radius: 8px;
-  font-size: 14px;
-  transition: all 0.3s ease;
-}
-
-.search-box input:focus {
-  outline: none;
-  border-color: #065f46;
-  box-shadow: 0 0 0 3px rgba(6, 95, 70, 0.1);
-}
-
-.filter-select {
+  gap: 15px;
+  margin-bottom: 25px;
   padding: 12px 15px;
-  border: 2px solid #e0e0e0;
-  border-radius: 8px;
-  font-size: 14px;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  background: white;
-  min-width: 150px;
+  border-radius: 12px;
+  background: linear-gradient(45deg, #065f46, #059669);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  align-items: center;
 }
 
-.filter-select:focus {
+.search-filter-bar select {
+  padding: 10px 14px;
+  border-radius: 8px;
+  border: none;
+  font-size: 14px;
+  background-color: #fff;
+  color: #065f46;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background-image: url("data:image/svg+xml;utf8,<svg fill='%23065f46' height='24' viewBox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/></svg>"); /* custom arrow */
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+  background-size: 16px;
+}
+
+.search-filter-bar select:hover {
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+.search-filter-bar select:focus {
   outline: none;
-  border-color: #065f46;
+  box-shadow: 0 0 5px rgba(5, 150, 105, 0.5);
 }
 
 .requests-grid {

@@ -59,5 +59,7 @@ if(isset($_POST['update_password'])){
         echo "<p class='error-msg'>Failed to update password.</p>";
     }
     exit;
+
+    $sojib = 8;
 }
 ?>

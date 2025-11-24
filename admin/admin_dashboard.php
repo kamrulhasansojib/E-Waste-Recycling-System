@@ -61,8 +61,8 @@ $companies_result = $conn->query("
         <nav class="nav-menu">
             <a href="#" class="active"><i class="fas fa-home"></i> Dashboard</a>
             <a href="../admin/users.php"><i class="fas fa-users"></i> Users</a>
-            <a href="../admin/items.php"><i class="fas fa-recycle"></i> E-Waste Items</a>
             <a href="../admin/companies.php"><i class="fas fa-building"></i> Companies</a>
+            <a href="../admin/items.php"><i class="fas fa-recycle"></i> E-Waste Items</a>
             <a href="../admin/admin_settings.php"><i class="fas fa-cogs"></i> Settings</a>
             <a href="../auth/logout.php" class="logout-btn"><i class="fas fa-sign-out-alt"></i> Logout</a>
         </nav>
@@ -157,7 +157,7 @@ $companies_result = $conn->query("
                         <td><span class="points"><?php echo $user['green_points']; ?></span></td>
                         <td>
                             <a href="view_user.php?user_id=<?php echo $user['user_id']; ?>" class="action-btn btn-view">
-                                <i class="fas fa-eye"></i> View
+                                <i class="fas fa-eye"></i>
                             </a>
                         </td>
                     </tr>
@@ -215,7 +215,7 @@ $companies_result = $conn->query("
                         <td>
                             <a href="view_company.php?company_id=<?php echo $company['company_id']; ?>"
                                 class="action-btn btn-view" title="View">
-                                <i class="fas fa-eye"></i> View
+                                <i class="fas fa-eye"></i>
                             </a>
 
                         </td>

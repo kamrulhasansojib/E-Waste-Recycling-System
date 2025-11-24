@@ -20,13 +20,20 @@ if(!isset($_SESSION['user_id'])){
 <body>
     <div class="dashboard-container">
         <aside class="sidebar">
-            <h2>Dashboard</h2>
-            <a href="user_dashboard.php"><i class="fas fa-home"></i>Dashboard</a>
-            <a href="#" class="active"><i class="fas fa-file-alt"></i>My Submissions</a>
-            <a href="nearby_companies.php"><i class="fas fa-building"></i>Nearby Companies</a>
-            <a href="../user/user_history.php"><i class="fas fa-history"></i> All History</a>
-            <a href="user_settings.php"><i class="fas fa-cogs"></i>Settings</a>
-            <a href="logout.php"><i class="fas fa-sign-out-alt"></i>Logout</a>
+            <div class="logo">
+                <i class="fas fa-recycle"></i>
+                <h2>E-TRIEVE</h2>
+                <span class="admin-badge">USER PANEL</span>
+            </div>
+            <nav>
+                <a href="../user/user_dashboard.php"><i class="fas fa-home"></i> Dashboard</a>
+                <a href="../user/requestform.php" class="active"><i class="fas fa-file-alt"></i> My Submissions</a>
+                <a href="../user/nearby_companies.php"><i class="fas fa-building"></i> Nearby Companies</a>
+                <a href="../user/user_history.php"><i class="fas fa-history"></i> All History</a>
+                <a href="../user/user_settings.php"><i class="fas fa-cogs"></i> Settings</a>
+                <a href="../auth/logout.php"><i class="fas fa-sign-out-alt"></i> Logout</a>
+            </nav>
+            <a href="../Home.html" class="back-btn"><i class="fa-solid fa-house"></i></a>
         </aside>
 
         <main class="main-content">
