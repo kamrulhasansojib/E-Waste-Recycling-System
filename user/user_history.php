@@ -42,7 +42,7 @@ $result = $stmt->get_result();
                 <span class="admin-badge">USER PANEL</span>
             </div>
             <nav>
-                <a href="../user/user_history.php"><i class="fas fa-home"></i> Dashboard</a>
+                <a href="../user/user_dashboard.php"><i class="fas fa-home"></i> Dashboard</a>
                 <a href="../user/requestform.php"><i class="fas fa-file-alt"></i> My Submissions</a>
                 <a href="../user/nearby_companies.php"><i class="fas fa-building"></i> Nearby Companies</a>
                 <a href="../user/user_history.php" class="active"><i class=" fas fa-history"></i> All History</a>
