@@ -16,59 +16,104 @@ body {
 }
 
 .sidebar {
-  width: 260px;
-  background: linear-gradient(45deg, #065f46, #059669);
-  color: white;
-  padding: 20px;
   position: fixed;
-  height: 100vh;
   left: 0;
   top: 0;
-  box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
-}
-
-.sidebar h2 {
-  margin: 40px 0;
-  text-align: center;
+  width: 240px;
+  height: 100vh;
+  background: linear-gradient(45deg, #065f46, #059669);
   color: #fff;
-  font-weight: 600;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 30px 0;
+  overflow-y: auto;
+  z-index: 1000;
 }
 
-.sidebar a {
-  display: block;
-  color: #ecf0f1;
+.logo {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+  border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+}
+
+.logo i {
+  font-size: 40px;
+  margin-top: 12px;
+  color: #1bf0a9;
+}
+
+.logo h2 {
+  font-size: 26px;
+  letter-spacing: 3px;
+  font-weight: 700;
+  margin-bottom: 7px;
+  margin-top: 7px;
+}
+
+.admin-badge {
+  display: inline-block;
+  background: rgba(255, 255, 255, 0.2);
+  padding: 4px 12px;
+  border-radius: 12px;
+  font-size: 11px;
+  margin-top: 5px;
+  margin-bottom: 20px;
+}
+
+.sidebar nav {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  flex: 1;
+}
+
+.sidebar nav a {
   text-decoration: none;
-  padding: 15px 20px;
-  margin-bottom: 10px;
-  border-radius: 8px;
+  color: #fff;
+  font-weight: 500;
+  padding: 10px 20px;
+  border-radius: 6px;
   transition: all 0.3s ease;
+}
+
+.sidebar nav a:hover,
+.sidebar nav a.active {
+  background: #065f46;
+}
+
+.sidebar nav a i {
+  margin-right: 8px;
   font-size: 16px;
 }
 
-.sidebar a:hover {
-  background: #065f46;
-  padding-left: 25px;
+.back-btn {
+  margin-top: auto;
+  padding: 20px 0;
 }
 
-.sidebar a.active {
-  background: #065f46;
-  font-weight: 600;
+.back-btn i {
+  color: #fff;
+  font-size: 22px;
+  transition: all 0.3s ease;
 }
 
-.sidebar a i {
-  margin-right: 8px;
-  font-size: 18px;
+.back-btn i:hover {
+  transform: translateY(-3px);
 }
 
 .main-content {
   margin-left: 240px;
-  padding: 0 40px 40px 40px;
+  padding: 30px 40px;
   width: calc(100% - 240px);
-  background: #ecfdf5;
+  overflow-y: auto;
 }
 
 .form-container {
-  max-width: 700px;
+  max-width: 750px;
   margin: 0 auto;
   background: white;
   padding: 40px;
@@ -149,4 +194,19 @@ button[type="submit"]:hover {
 
 button[type="submit"]:active {
   transform: translateY(0);
+}
+
+.message {
+  margin: 20px 0;
+}
+.message .success-msg {
+  font-size: 18px;
+  color: green;
+  font-weight: 600;
+  margin-bottom: 15px;
+}
+.message .error-msg {
+  color: red;
+  font-weight: bold;
+  margin-bottom: 15px;
 }

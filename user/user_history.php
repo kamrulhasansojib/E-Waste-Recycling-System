@@ -36,15 +36,20 @@ $result = $stmt->get_result();
     <div class="dashboard-container">
 
         <aside class="sidebar">
-            <h2>E-TRIEVE</h2>
-            <ul>
-                <li><a href="../user/user_dashboard.php"><i class="fas fa-home"></i> Dashboard</a></li>
-                <li><a href="../user/requestform.php"><i class="fas fa-file-alt"></i> My Submissions</a></li>
-                <li><a href="../user/nearby_companies.php"><i class="fas fa-building"></i> Nearby Companies</a></li>
-                <li><a href="#" class="active"><i class="fas fa-history"></i> My History</a></li>
-                <li><a href="../user/user_settings.php"><i class="fas fa-cogs"></i> Settings</a></li>
-                <li><a href="../auth/logout.php"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
-            </ul>
+            <div class="logo">
+                <i class="fas fa-recycle"></i>
+                <h2>E-TRIEVE</h2>
+                <span class="admin-badge">USER PANEL</span>
+            </div>
+            <nav>
+                <a href="../user/user_history.php"><i class="fas fa-home"></i> Dashboard</a>
+                <a href="../user/requestform.php"><i class="fas fa-file-alt"></i> My Submissions</a>
+                <a href="../user/nearby_companies.php"><i class="fas fa-building"></i> Nearby Companies</a>
+                <a href="../user/user_history.php" class="active"><i class=" fas fa-history"></i> All History</a>
+                <a href="../user/user_settings.php"><i class="fas fa-cogs"></i> Settings</a>
+                <a href="../auth/logout.php"><i class="fas fa-sign-out-alt"></i> Logout</a>
+            </nav>
+            <a href="../Home.html" class="back-btn"><i class="fa-solid fa-house"></i></a>
         </aside>
 
         <main class="main-content">

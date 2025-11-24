@@ -69,7 +69,9 @@ if($result->num_rows > 0){
     <div class="dashboard-container">
         <aside class="sidebar">
             <div class="logo">
-                <h2>Dashboard</h2>
+                <i class="fas fa-recycle"></i>
+                <h2>E-TRIEVE</h2>
+                <span class="admin-badge">USER PANEL</span>
             </div>
             <nav>
                 <a href="#" class="active"><i class="fas fa-home"></i> Dashboard</a>
@@ -84,42 +86,55 @@ if($result->num_rows > 0){
 
         <main class="main-content">
             <header class="topbar">
-                <h1>Welcome, <?php echo htmlspecialchars($user_name);?> 👋</h1>
+                <h1>Welcome, <?php echo htmlspecialchars($user_name);?></h1>
                 <div class="points">
-                    <span>🌿 Green Points:</span>
+                    <i class="fas fa-leaf"></i>
+                    <span>Green Points:</span>
                     <strong><?php echo $green_points; ?></strong>
                 </div>
             </header>
 
             <section class="stats">
                 <div class="card">
+                    <div class="card-icon total">
+                        <i class="fas fa-clipboard-list"></i>
+                    </div>
                     <h3>Total Submissions</h3>
                     <p><?php echo $total_submissions; ?></p>
                 </div>
                 <div class="card">
+                    <div class="card-icon pending">
+                        <i class="fas fa-clock"></i>
+                    </div>
                     <h3>Pending Requests</h3>
                     <p><?php echo $pending_requests; ?></p>
                 </div>
                 <div class="card">
+                    <div class="card-icon picked">
+                        <i class="fas fa-truck"></i>
+                    </div>
                     <h3>Picked Up</h3>
                     <p><?php echo $picked_up; ?></p>
                 </div>
                 <div class="card">
+                    <div class="card-icon recycled">
+                        <i class="fas fa-check-circle"></i>
+                    </div>
                     <h3>Recycled</h3>
                     <p><?php echo $recycled; ?></p>
                 </div>
             </section>
 
             <section class="table-section">
-                <h2>My E-Waste Submissions</h2>
+                <h2><i class="fas fa-table"></i> My E-Waste Submissions</h2>
                 <table>
                     <thead>
                         <tr>
-                            <th>Device Type</th>
-                            <th>Condition</th>
-                            <th>Quantity</th>
-                            <th>Pickup Date</th>
-                            <th>Status</th>
+                            <th><i class="fas fa-laptop"></i> Device Type</th>
+                            <th><i class="fas fa-info-circle"></i> Condition</th>
+                            <th><i class="fas fa-boxes"></i> Quantity</th>
+                            <th><i class="fas fa-calendar-alt"></i> Pickup Date</th>
+                            <th><i class="fas fa-signal"></i> Status</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -127,24 +142,39 @@ if($result->num_rows > 0){
                         if(count($requests) > 0){
                             foreach($requests as $row){
                                 $status_class = '';
+                                $status_icon = '';
                                 switch($row['status']){
-                                    case 'Pending': $status_class = 'pending'; break;
-                                    case 'Accepted': $status_class = 'picked'; break;
-                                    case 'Completed': $status_class = 'completed'; break;
-                                    case 'Rejected': $status_class = 'rejected'; break;
-                                    default: $status_class = 'pending';
+                                    case 'Pending': 
+                                        $status_class = 'pending'; 
+                                        $status_icon = 'fas fa-clock';
+                                        break;
+                                    case 'Accepted': 
+                                        $status_class = 'picked'; 
+                                        $status_icon = 'fas fa-truck';
+                                        break;
+                                    case 'Completed': 
+                                        $status_class = 'completed'; 
+                                        $status_icon = 'fas fa-check-circle';
+                                        break;
+                                    case 'Rejected': 
+                                        $status_class = 'rejected'; 
+                                        $status_icon = 'fas fa-times-circle';
+                                        break;
+                                    default: 
+                                        $status_class = 'pending';
+                                        $status_icon = 'fas fa-clock';
                                 }
                                 echo '<tr>
                                         <td>'.htmlspecialchars($row['device_type']).'</td>
                                         <td>'.htmlspecialchars($row['device_condition']).'</td>
                                         <td>'.htmlspecialchars($row['quantity']).'</td>
                                         <td>'.htmlspecialchars($row['pickup_date']).'</td>
-                                        <td><span class="status '.$status_class.'">'.htmlspecialchars($row['status']).'</span></td>
+                                        <td><span class="status '.$status_class.'"><i class="'.$status_icon.'"></i> '.htmlspecialchars($row['status']).'</span></td>
                                      </tr>';
                         }
                         } else {
                         echo '<tr>
-                            <td colspan="5">No submissions found.</td>
+                            <td colspan="5"><i class="fas fa-inbox"></i> No submissions found.</td>
                         </tr>';
                         }
                         ?>

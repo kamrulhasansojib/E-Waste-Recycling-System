@@ -47,7 +47,9 @@ $user = $result->fetch_assoc();
     <div class="dashboard-container">
         <aside class="sidebar">
             <div class="logo">
-                <h2>Dashboard</h2>
+                <i class="fas fa-recycle"></i>
+                <h2>E-TRIEVE</h2>
+                <span class="admin-badge">USER PANEL</span>
             </div>
             <nav>
                 <a href="../user/user_dashboard.php"><i class="fas fa-home"></i> Dashboard</a>
@@ -57,7 +59,7 @@ $user = $result->fetch_assoc();
                 <a href="#" class="active"><i class="fas fa-cogs"></i> Settings</a>
                 <a href="../auth/logout.php"><i class="fas fa-sign-out-alt"></i> Logout</a>
             </nav>
-
+            <a href="../Home.html" class="back-btn"><i class="fa-solid fa-house"></i></a>
         </aside>
 
         <main class="main-content">

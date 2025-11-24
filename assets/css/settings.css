@@ -15,50 +15,100 @@ body {
 }
 
 .sidebar {
-  width: 250px;
-  background: linear-gradient(135deg, #065f46, #059669);
-  color: white;
-  padding: 20px;
-}
-
-.sidebar h2 {
-  margin: 40px 0;
-  font-size: 24px;
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 240px;
+  height: 100vh;
+  background: linear-gradient(45deg, #065f46, #059669);
   color: #fff;
-  text-align: center;
-}
-
-.sidebar ul {
-  list-style: none;
-}
-
-.sidebar li {
-  margin-bottom: 10px;
-}
-
-.sidebar a {
   display: flex;
+  flex-direction: column;
   align-items: center;
-  padding: 12px;
-  color: white;
-  text-decoration: none;
-  border-radius: 5px;
-  transition: background 0.3s;
+  padding: 30px 0;
+  overflow-y: auto;
+  z-index: 1000;
 }
 
-.sidebar a:hover,
-.sidebar a.active {
+.logo {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+  border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+}
+
+.logo i {
+  font-size: 40px;
+  margin-top: 12px;
+  color: #1bf0a9;
+}
+
+.logo h2 {
+  font-size: 26px;
+  letter-spacing: 3px;
+  font-weight: 700;
+  margin-bottom: 7px;
+  margin-top: 7px;
+}
+
+.admin-badge {
+  display: inline-block;
+  background: rgba(255, 255, 255, 0.2);
+  padding: 4px 12px;
+  border-radius: 12px;
+  font-size: 11px;
+  margin-top: 5px;
+  margin-bottom: 20px;
+}
+
+.sidebar nav {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  flex: 1;
+}
+
+.sidebar nav a {
+  text-decoration: none;
+  color: #fff;
+  font-weight: 500;
+  padding: 10px 20px;
+  border-radius: 6px;
+  transition: all 0.3s ease;
+}
+
+.sidebar nav a:hover,
+.sidebar nav a.active {
   background: #065f46;
 }
 
-.sidebar i {
-  margin-right: 10px;
-  width: 20px;
+.sidebar nav a i {
+  margin-right: 8px;
+  font-size: 16px;
+}
+
+.back-btn {
+  margin-top: auto;
+  padding: 20px 0;
+}
+
+.back-btn i {
+  color: #fff;
+  font-size: 22px;
+  transition: all 0.3s ease;
+}
+
+.back-btn i:hover {
+  transform: translateY(-3px);
 }
 
 .main-content {
-  flex: 1;
-  padding: 30px;
+  margin-left: 240px;
+  padding: 30px 40px;
+  width: calc(100% - 240px);
+  overflow-y: auto;
 }
 
 .header {

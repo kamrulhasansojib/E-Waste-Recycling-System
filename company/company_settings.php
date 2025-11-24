@@ -46,14 +46,18 @@ $company = $result->fetch_assoc();
 <body>
     <div class="dashboard-container">
         <aside class="sidebar">
-            <h2>E-TRIEVE</h2>
-            <ul>
-                <li><a href="../company/company_dashboard.php"><i class="fas fa-home"></i> Dashboard</a></li>
-                <li><a href="../company/requests.php"><i class="fas fa-inbox"></i> Requests</a></li>
-                <li><a href="../company/completed.php"><i class="fas fa-check-circle"></i> Completed</a></li>
-                <li><a href="#" class="active"><i class="fas fa-cogs"></i> Settings</a></li>
-                <li><a href="../auth/logout.php"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
-            </ul>
+            <div class="logo">
+                <i class="fas fa-recycle"></i>
+                <h2>E-TRIEVE</h2>
+                <span class="admin-badge">COMPANY PANEL</span>
+            </div>
+            <nav>
+                <a href="../company/company_dashboard.php"><i class="fas fa-home"></i> Dashboard</a>
+                <a href="../company/requests.php"><i class="fas fa-inbox"></i> Requests</a></li>
+                <a href="../company/completed.php"><i class="fas fa-check-circle"></i> Completed</a>
+                <a href="#" class="active"><i class="fas fa-cogs"></i> Settings</a>
+                <a href="../auth/logout.php"><i class="fas fa-sign-out-alt"></i> Logout</a>
+            </nav>
         </aside>
 
         <main class="main-content">

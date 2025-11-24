@@ -212,6 +212,7 @@ body {
   border-radius: 5px;
   cursor: pointer;
   margin-left: 10px;
+  text-align: center;
 }
 
 .btn-export:hover {
