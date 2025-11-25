@@ -113,7 +113,7 @@ if($result->num_rows > 0){
                     <div class="card-icon picked">
                         <i class="fas fa-truck"></i>
                     </div>
-                    <h3>Picked Up</h3>
+                    <h3>Pick Up Accept</h3>
                     <p><?php echo $picked_up; ?></p>
                 </div>
                 <div class="card">
