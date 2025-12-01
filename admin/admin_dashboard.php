@@ -12,6 +12,59 @@ $total_companies = $conn->query("SELECT COUNT(*) as count FROM companies")->fetc
 $total_ewaste = $conn->query("SELECT COALESCE(SUM(quantity),0) as total FROM requests WHERE status='Completed'")->fetch_assoc()['total'];
 $accepted_requests = $conn->query("SELECT COUNT(*) as count FROM requests WHERE status='Accepted'")->fetch_assoc()['count'];
 
+$stmt_notif = $conn->query("
+    SELECT 
+        n.notification_id,
+        n.message,
+        n.created_at,
+        n.user_id,
+        n.company_id,
+        u.name as user_name,
+        c.company_name,
+        r.request_id,
+        r.device_type,
+        r.status,
+        sender_user.name as sender_user_name,
+        sender_company.company_name as sender_company_name
+    FROM notifications n
+    LEFT JOIN users u ON n.user_id = u.user_id
+    LEFT JOIN companies c ON n.company_id = c.company_id
+    LEFT JOIN requests r ON (n.user_id = r.user_id AND n.company_id = r.company_id)
+    LEFT JOIN users sender_user ON (n.company_id IS NOT NULL AND r.user_id = sender_user.user_id)
+    LEFT JOIN companies sender_company ON (n.company_id IS NULL AND r.company_id = sender_company.company_id)
+    WHERE n.is_read = 0
+    GROUP BY n.notification_id
+    ORDER BY n.created_at DESC
+    LIMIT 20
+");
+
+$notifications = [];
+$unread_count = 0;
+if($stmt_notif->num_rows > 0){
+    while($row = $stmt_notif->fetch_assoc()){
+        $formatted_msg = '';
+        
+        if(!empty($row['company_id']) && !empty($row['user_name'])){
+            $company_name = $row['company_name'] ?: 'Unknown Company';
+            $formatted_msg = "User <strong>" . htmlspecialchars($row['user_name']) . " (" . $row['user_id'] . ")</strong> has cancelled request with <strong>" . htmlspecialchars($company_name) . " (" . $row['company_id'] . ")</strong>";
+            if(!empty($row['device_type'])){
+                $formatted_msg .= " for " . htmlspecialchars($row['device_type']);
+            }
+        }
+        elseif(empty($row['company_id']) && !empty($row['sender_company_name'])){
+            $user_name = $row['user_name'] ?: 'Unknown User';
+            $formatted_msg = "Company <strong>" . htmlspecialchars($row['sender_company_name']) . "</strong> " . strtolower($row['message']) . " for User <strong>" . htmlspecialchars($user_name) . " (" . $row['user_id'] . ")</strong>";
+        }
+        else {
+            $formatted_msg = htmlspecialchars($row['message']);
+        }
+        
+        $row['formatted_message'] = $formatted_msg;
+        $notifications[] = $row;
+        $unread_count++;
+    }
+}
+
 $users_result = $conn->query("
     SELECT 
         u.user_id, 
@@ -25,7 +78,6 @@ $users_result = $conn->query("
     GROUP BY u.user_id
     ORDER BY u.created_at DESC
 ");
-
 
 $companies_result = $conn->query("
     SELECT c.company_id, c.company_name, c.email, c.contact, c.address, c.created_at,
@@ -63,6 +115,7 @@ $companies_result = $conn->query("
             <a href="../admin/users.php"><i class="fas fa-users"></i> Users</a>
             <a href="../admin/companies.php"><i class="fas fa-building"></i> Companies</a>
             <a href="../admin/items.php"><i class="fas fa-recycle"></i> E-Waste Items</a>
+            <a href="../admin/company_billing.php"><i class="fas fa-file-invoice-dollar"></i> Billing</a>
             <a href="../admin/admin_settings.php"><i class="fas fa-cogs"></i> Settings</a>
             <a href="../auth/logout.php" class="logout-btn"><i class="fas fa-sign-out-alt"></i> Logout</a>
         </nav>
@@ -75,11 +128,37 @@ $companies_result = $conn->query("
                 <p>Welcome back! Here's what's happening today.</p>
             </div>
             <div class="topbar-icons">
+                <div class="notification-bell" onclick="toggleNotifBar()">
+                    <i class="fas fa-bell"></i>
+                    <?php if($unread_count > 0){ ?>
+                    <span class="badge" id="notif-count"><?php echo $unread_count; ?></span>
+                    <?php } ?>
+                </div>
                 <div class="user-profile">
                     <i class="fas fa-user-circle"></i>
                     <span>Admin</span>
                 </div>
             </div>
+        </div>
+
+
+        <div id="notif-overlay" onclick="toggleNotifBar()"></div>
+
+        <div id="notif-bar">
+            <h3>All Activities <span class="close-btn" onclick="toggleNotifBar()">×</span></h3>
+            <?php if(count($notifications) > 0){ ?>
+            <?php foreach($notifications as $n){ ?>
+            <div class="notif-item">
+                <div class="notif-msg"><?php echo $n['formatted_message']; ?></div>
+                <small><i class="far fa-clock"></i> <?php echo htmlspecialchars($n['created_at']); ?></small>
+            </div>
+            <?php } ?>
+            <?php } else { ?>
+            <div class="notif-empty">
+                <i class="fas fa-bell-slash"></i>
+                <p>No new activities</p>
+            </div>
+            <?php } ?>
         </div>
 
         <div class="cards">
@@ -217,7 +296,6 @@ $companies_result = $conn->query("
                                 class="action-btn btn-view" title="View">
                                 <i class="fas fa-eye"></i>
                             </a>
-
                         </td>
                     </tr>
                     <?php endwhile; ?>
@@ -230,10 +308,35 @@ $companies_result = $conn->query("
             </table>
         </div>
     </div>
+
     <script>
+    function toggleNotifBar() {
+        const bar = document.getElementById('notif-bar');
+        const overlay = document.getElementById('notif-overlay');
+        const badge = document.getElementById('notif-count');
+
+        bar.classList.toggle('show');
+        overlay.classList.toggle('show');
+
+        if (bar.classList.contains('show') && badge) {
+            badge.style.display = 'none';
+        }
+    }
+
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {
+            const bar = document.getElementById('notif-bar');
+            const overlay = document.getElementById('notif-overlay');
+            if (bar.classList.contains('show')) {
+                bar.classList.remove('show');
+                overlay.classList.remove('show');
+            }
+        }
+    });
+
     document.getElementById('usersApply').addEventListener('click', function() {
         const filter = document.getElementById('usersSearch').value.toLowerCase();
-        const rows = document.querySelectorAll('#usersTable tbody tr'); // শুধু Users table
+        const rows = document.querySelectorAll('#usersTable tbody tr');
         rows.forEach(row => {
             const text = row.textContent.toLowerCase();
             row.style.display = text.includes(filter) ? '' : 'none';
@@ -242,7 +345,7 @@ $companies_result = $conn->query("
 
     document.getElementById('companiesApply').addEventListener('click', function() {
         const filter = document.getElementById('companiesSearch').value.toLowerCase();
-        const rows = document.querySelectorAll('#companiesTable tbody tr'); // শুধু Companies table
+        const rows = document.querySelectorAll('#companiesTable tbody tr');
         rows.forEach(row => {
             const text = row.textContent.toLowerCase();
             row.style.display = text.includes(filter) ? '' : 'none';

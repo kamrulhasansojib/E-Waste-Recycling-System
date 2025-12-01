@@ -26,11 +26,8 @@ $requests = $conn->query("SELECT r.*, u.name as user_name, u.email as user_email
                           ORDER BY r.created_at DESC");
 
 $total_pickups = $conn->query("SELECT COUNT(*) as total FROM requests WHERE company_id=$company_id")->fetch_assoc()['total'];
-
 $completed_pickups = $conn->query("SELECT COUNT(*) as completed FROM requests WHERE company_id=$company_id AND status='Completed'")->fetch_assoc()['completed'];
-
 $accepted_pickups = $conn->query("SELECT COUNT(*) as accepted FROM requests WHERE company_id=$company_id AND status='Accepted'")->fetch_assoc()['accepted'];
-
 $total_items = $conn->query("SELECT COALESCE(SUM(quantity),0) as total FROM requests WHERE company_id=$company_id AND status='Completed'")->fetch_assoc()['total'];
 ?>
 
@@ -58,23 +55,9 @@ $total_items = $conn->query("SELECT COALESCE(SUM(quantity),0) as total FROM requ
                 </div>
                 <div class="profile-info">
                     <h1><?php echo htmlspecialchars($company['company_name']); ?></h1>
-                    <p class="company-id">Company ID: #<?php echo $company['company_id']; ?> <style>
-                        .company-id {
-                            color: #718096;
-                            font-size: 14px;
-                            margin-bottom: 8px;
-                        }
-                        </style>
-                    </p>
+                    <p class="company-id">Company ID: #<?php echo $company['company_id']; ?></p>
                     <?php if(!empty($company['motto'])): ?>
-                    <p class="motto">"<?php echo htmlspecialchars($company['motto']); ?>"<style>
-                        .motto {
-                            color: #06bc82ff;
-                            font-size: 15px;
-                            font-style: italic;
-                        }
-                        </style>
-                    </p>
+                    <p class="motto">"<?php echo htmlspecialchars($company['motto']); ?>"</p>
                     <?php endif; ?>
                 </div>
             </div>
@@ -132,9 +115,7 @@ $total_items = $conn->query("SELECT COALESCE(SUM(quantity),0) as total FROM requ
             <?php while($r = $requests->fetch_assoc()): ?>
             <div class="request-card">
                 <div class="request-header">
-                    <h4>
-                        <?php echo htmlspecialchars($r['device_type']); ?>
-                    </h4>
+                    <h4><?php echo htmlspecialchars($r['device_type']); ?></h4>
                     <span class="status-badge status-<?php echo strtolower($r['status']); ?>">
                         <?php echo htmlspecialchars($r['status']); ?>
                     </span>
@@ -153,6 +134,25 @@ $total_items = $conn->query("SELECT COALESCE(SUM(quantity),0) as total FROM requ
                         <div class="detail-content">
                             <label>Condition</label>
                             <div class="detail-value"><?php echo htmlspecialchars($r['device_condition']); ?></div>
+                        </div>
+                    </div>
+                    <div class="detail-item">
+                        <i class="fas fa-dollar-sign"></i>
+                        <div class="detail-content">
+                            <label>Estimated Value</label>
+                            <div class="detail-value">
+                                <?php 
+                                if(!empty($r['estimated_value'])){
+                                    if(is_numeric($r['estimated_value'])){
+                                        echo '$'.number_format($r['estimated_value'], 2);
+                                    } else {
+                                        echo htmlspecialchars($r['estimated_value']);
+                                    }
+                                } else {
+                                    echo 'N/A';
+                                }
+                                ?>
+                            </div>
                         </div>
                     </div>
                     <div class="detail-item">
@@ -179,7 +179,7 @@ $total_items = $conn->query("SELECT COALESCE(SUM(quantity),0) as total FROM requ
 
                     <div class="user-info">
                         <h5><i class="fas fa-user"></i> Requested By</h5>
-                        <div class="request-details">
+                        <div class="requests-details">
                             <div class="detail-item">
                                 <i class="fas fa-user-circle"></i>
                                 <div class="detail-content">

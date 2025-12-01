@@ -3,8 +3,14 @@ session_start();
 include '../database/connection.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $stmt = $conn->prepare("INSERT INTO items (item_name, category, description) VALUES (?, ?, ?)");
-    $stmt->bind_param("sss", $_POST['item_name'], $_POST['category'], $_POST['description']);
+    $item_name = $_POST['item_name'];
+    $category = $_POST['category'];
+    $description = $_POST['description'];
+    $estimated_value = !empty($_POST['estimated_value']) ? $_POST['estimated_value'] : null;
+    $priority_point = !empty($_POST['priority_point']) ? intval($_POST['priority_point']) : null;
+
+    $stmt = $conn->prepare("INSERT INTO items (item_name, category, description, estimated_value, priority_point) VALUES (?, ?, ?, ?, ?)");
+    $stmt->bind_param("ssssi", $item_name, $category, $description, $estimated_value, $priority_point);
     $stmt->execute();
     header("Location: items.php");
     exit;
@@ -88,6 +94,16 @@ $items = mysqli_query($conn, $query);
                     <input type="text" name="category" placeholder="Enter category" required />
                 </div>
 
+                <div class="form-group">
+                    <label><i class="fas fa-hand-holding-usd"></i> Estimated Value</label>
+                    <input type="text" name="estimated_value" placeholder="Enter estimated value (e.g., 600-2000)" />
+                </div>
+
+                <div class="form-group">
+                    <label><i class="fas fa-star"></i> Priority Point</label>
+                    <input type="number" name="priority_point" placeholder="5–20 recommended" min="1" max="50" />
+                </div>
+
                 <div class="form-group full">
                     <label><i class="fas fa-file-alt"></i> Description</label>
                     <textarea name="description" placeholder="Short description..."></textarea>
@@ -121,6 +137,8 @@ $items = mysqli_query($conn, $query);
                         <th><i class="fas fa-box"></i> Item Name</th>
                         <th><i class="fas fa-layer-group"></i> Category</th>
                         <th><i class="fas fa-file-alt"></i> Description</th>
+                        <th><i class="fas fa-dollar-sign"></i> Estimated Value</th>
+                        <th><i class="fas fa-star"></i> Priority Point</th>
                         <th><i class="fas fa-cog"></i> Actions</th>
                     </tr>
                 </thead>
@@ -132,10 +150,11 @@ $items = mysqli_query($conn, $query);
                         <td><?php echo $row['item_name']; ?></td>
                         <td><?php echo $row['category']; ?></td>
                         <td><?php echo $row['description']; ?></td>
-
+                        <td><?php echo !empty($row['estimated_value']) ? $row['estimated_value'] : 'N/A'; ?></td>
+                        <td><?php echo !empty($row['priority_point']) ? $row['priority_point'] : 'N/A'; ?></td>
                         <td class="btn-action">
                             <a href="edit_item.php?item_id=<?php echo $row['item_id']; ?>" class="action-btn btn-edit">
-                                <i class="fas fa-pen"></i> Edit
+                                <i class="fas fa-pen"></i>
                             </a>
                             <a href="items.php?delete=<?php echo $row['item_id']; ?>"
                                 onclick="return confirm('Are you sure you want to delete this item?');"

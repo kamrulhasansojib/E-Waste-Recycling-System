@@ -19,7 +19,6 @@ if(!$user){
     die("User not found");
 }
 
-// Updated query to include company name
 $requests = $conn->query("SELECT r.*, c.company_name 
                           FROM requests r 
                           LEFT JOIN companies c ON r.company_id = c.company_id 
@@ -27,9 +26,7 @@ $requests = $conn->query("SELECT r.*, c.company_name
                           ORDER BY r.created_at DESC");
 
 $total_items = $conn->query("SELECT COALESCE(SUM(quantity),0) as total FROM requests WHERE user_id=$user_id")->fetch_assoc()['total'];
-
 $completed_pickups = $conn->query("SELECT COALESCE(SUM(quantity),0) as completed FROM requests WHERE user_id=$user_id AND status='Completed'")->fetch_assoc()['completed'];
-
 $pending_requests = $conn->query("SELECT COUNT(*) as count FROM requests WHERE user_id=$user_id AND status='Pending'")->fetch_assoc()['count'];
 ?>
 
@@ -114,9 +111,7 @@ $pending_requests = $conn->query("SELECT COUNT(*) as count FROM requests WHERE u
             <?php while($r = $requests->fetch_assoc()): ?>
             <div class="request-card">
                 <div class="request-header">
-                    <h4>
-                        <?php echo htmlspecialchars($r['device_type']); ?>
-                    </h4>
+                    <h4><?php echo htmlspecialchars($r['device_type']); ?></h4>
                     <span class="status-badge status-<?php echo strtolower($r['status']); ?>">
                         <?php echo htmlspecialchars($r['status']); ?>
                     </span>
@@ -130,6 +125,7 @@ $pending_requests = $conn->query("SELECT COUNT(*) as count FROM requests WHERE u
                             <div class="detail-value"><?php echo $r['quantity']; ?> items</div>
                         </div>
                     </div>
+
                     <div class="detail-item">
                         <i class="fas fa-info-circle"></i>
                         <div class="detail-content">
@@ -137,6 +133,15 @@ $pending_requests = $conn->query("SELECT COUNT(*) as count FROM requests WHERE u
                             <div class="detail-value"><?php echo htmlspecialchars($r['device_condition']); ?></div>
                         </div>
                     </div>
+
+                    <div class="detail-item">
+                        <i class="fas fa-dollar-sign"></i>
+                        <div class="detail-content">
+                            <label>Estimated Value</label>
+                            <div class="detail-value"><?php echo htmlspecialchars($r['estimated_value']); ?></div>
+                        </div>
+                    </div>
+
                     <div class="detail-item">
                         <i class="fas fa-building"></i>
                         <div class="detail-content">
@@ -146,6 +151,7 @@ $pending_requests = $conn->query("SELECT COUNT(*) as count FROM requests WHERE u
                             </div>
                         </div>
                     </div>
+
                     <div class="detail-item">
                         <i class="fas fa-calendar-alt"></i>
                         <div class="detail-content">
@@ -153,6 +159,7 @@ $pending_requests = $conn->query("SELECT COUNT(*) as count FROM requests WHERE u
                             <div class="detail-value"><?php echo date('M j, Y', strtotime($r['pickup_date'])); ?></div>
                         </div>
                     </div>
+
                     <div class="detail-item">
                         <i class="fas fa-phone-alt"></i>
                         <div class="detail-content">
@@ -160,7 +167,8 @@ $pending_requests = $conn->query("SELECT COUNT(*) as count FROM requests WHERE u
                             <div class="detail-value"><?php echo htmlspecialchars($r['contact']); ?></div>
                         </div>
                     </div>
-                    <div class="detail-item" style="grid-column: 1 / -1;">
+
+                    <div class="detail-item">
                         <i class="fas fa-map-marker-alt"></i>
                         <div class="detail-content">
                             <label>Address</label>
