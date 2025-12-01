@@ -26,6 +26,26 @@ if(isset($_POST['request_id']) && isset($_POST['action'])){
 $pending_count = $conn->query("SELECT COUNT(*) AS total FROM requests WHERE company_id='$company_id' AND status='Pending'")->fetch_assoc()['total'];
 $accepted_count = $conn->query("SELECT COUNT(*) AS total FROM requests WHERE company_id='$company_id' AND status='Accepted'")->fetch_assoc()['total'];
 $completed_count = $conn->query("SELECT COUNT(*) AS total FROM requests WHERE company_id='$company_id' AND status='Completed'")->fetch_assoc()['total'];
+$rejected_count = $conn->query("SELECT COUNT(*) AS total FROM requests WHERE company_id='$company_id' AND status='Rejected'")->fetch_assoc()['total'];
+
+$stmt_notif = $conn->prepare("
+    SELECT notification_id, message, created_at 
+    FROM notifications 
+    WHERE company_id = ? AND is_read = 0 
+    ORDER BY created_at DESC 
+    LIMIT 10
+");
+$stmt_notif->bind_param("i", $company_id);
+$stmt_notif->execute();
+$res_notif = $stmt_notif->get_result();
+$notifications = [];
+$unread_count = 0;
+if($res_notif->num_rows > 0){
+    while($row = $res_notif->fetch_assoc()){
+        $notifications[] = $row;
+        $unread_count++;
+    }
+}
 
 $query = "SELECT r.request_id, r.device_type, r.quantity, r.pickup_date, r.status, u.name AS customer_name
           FROM requests r
@@ -70,41 +90,65 @@ $result = $stmt->get_result();
         <main class="main-content">
             <div class="header">
                 <h1>Welcome, <?php echo htmlspecialchars($company_name); ?></h1>
-                <div class="user-info">
-                    <span>Admin</span>
-                    <i class="fas fa-user-circle"></i>
+                <div class="header-right">
+                    <div class="notification-bell" onclick="toggleNotifBar()">
+                        <i class="fas fa-bell fa-2x"></i>
+                        <?php if($unread_count > 0){ ?>
+                        <span class="badge" id="notif-count"><?php echo $unread_count; ?></span>
+                        <?php } ?>
+                    </div>
+                    <div class="user-info">
+                        <span>Admin</span>
+                        <i class="fas fa-user-circle"></i>
+                    </div>
                 </div>
             </div>
 
-            <div class="stats-container">
-                <div class="stat-card">
-                    <div class="stat-icon" style="background: #3498db">
+            <div id="notif-overlay" onclick="toggleNotifBar()"></div>
+
+            <div id="notif-bar">
+                <h3>Notifications <span class="close-btn" onclick="toggleNotifBar()">×</span></h3>
+                <?php
+                if(count($notifications) > 0){
+                    foreach($notifications as $n){
+                        echo '<div class="notif-item">'.htmlspecialchars($n['message']).'<br><small>'.htmlspecialchars($n['created_at']).'</small></div>';
+                    }
+                } else {
+                    echo '<p>No new notifications.</p>';
+                }
+                ?>
+            </div>
+
+            <div class="stats">
+                <div class="card">
+                    <div class="card-icon total" style="background: #3498db">
                         <i class="fas fa-inbox"></i>
                     </div>
-                    <div class="stat-info">
-                        <h3><?php echo $pending_count; ?></h3>
-                        <p>Pending Requests</p>
-                    </div>
+                    <h3>Pending Requests</h3>
+                    <p><?php echo $pending_count; ?></p>
                 </div>
 
-                <div class="stat-card">
-                    <div class="stat-icon" style="background: #2ecc71">
+                <div class="card">
+                    <div class="card-icon pending" style="background: #2ecc71">
                         <i class="fas fa-check-circle"></i>
                     </div>
-                    <div class="stat-info">
-                        <h3><?php echo $accepted_count; ?></h3>
-                        <p>Accepted Pickups</p>
-                    </div>
+                    <h3>Accepted Pickups</h3>
+                    <p><?php echo $accepted_count; ?></p>
                 </div>
 
-                <div class="stat-card">
-                    <div class="stat-icon" style="background: #e74c3c">
+                <div class="card">
+                    <div class="card-icon recycled" style="background: #e74c3c">
                         <i class="fas fa-star"></i>
                     </div>
-                    <div class="stat-info">
-                        <h3><?php echo $completed_count; ?></h3>
-                        <p>Completed Pickups</p>
+                    <h3>Completed Pickups</h3>
+                    <p><?php echo $completed_count; ?></p>
+                </div>
+                <div class="card">
+                    <div class="card-icon rejected" style="background: #f39c12">
+                        <i class="fas fa-times-circle"></i>
                     </div>
+                    <h3>Rejected Requests</h3>
+                    <p><?php echo $rejected_count; ?></p>
                 </div>
             </div>
 
@@ -122,7 +166,6 @@ $result = $stmt->get_result();
                                 <th>Quantity</th>
                                 <th>Pickup Date</th>
                                 <th>Status</th>
-                                <th>Action</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -136,27 +179,6 @@ $result = $stmt->get_result();
                                 <td><span
                                         class="status <?php echo strtolower($row['status']); ?>"><?php echo $row['status']; ?></span>
                                 </td>
-                                <td>
-                                    <?php if($row['status'] === 'Pending'): ?>
-                                    <form method="POST" style="display:inline;">
-                                        <input type="hidden" name="request_id"
-                                            value="<?php echo $row['request_id']; ?>">
-                                        <input type="hidden" name="action" value="Accepted">
-                                        <button type="submit" class="btn-action btn-accept">Accept</button>
-                                    </form>
-                                    <form method="POST" style="display:inline;">
-                                        <input type="hidden" name="request_id"
-                                            value="<?php echo $row['request_id']; ?>">
-                                        <input type="hidden" name="action" value="Rejected">
-                                        <button type="submit" class="btn-action btn-reject">Reject</button>
-                                    </form>
-                                    <?php else: ?>
-                                    <a href="view_request.php?request_id=<?php echo $row['request_id']; ?>"
-                                        class="btn-view" style="text-decoration: none; color: white;">
-                                        <i class="fas fa-eye"></i> View
-                                    </a>
-                                    <?php endif; ?>
-                                </td>
                             </tr>
                             <?php endwhile; ?>
                         </tbody>
@@ -166,6 +188,32 @@ $result = $stmt->get_result();
 
         </main>
     </div>
+
+    <script>
+    function toggleNotifBar() {
+        const bar = document.getElementById('notif-bar');
+        const overlay = document.getElementById('notif-overlay');
+        const badge = document.getElementById('notif-count');
+
+        bar.classList.toggle('show');
+        overlay.classList.toggle('show');
+
+        if (bar.classList.contains('show') && badge) {
+            badge.style.display = 'none';
+        }
+    }
+
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {
+            const bar = document.getElementById('notif-bar');
+            const overlay = document.getElementById('notif-overlay');
+            if (bar.classList.contains('show')) {
+                bar.classList.remove('show');
+                overlay.classList.remove('show');
+            }
+        }
+    });
+    </script>
 
 </body>
 

@@ -10,6 +10,7 @@ include '../database/connection.php';
 $company_id = $_SESSION['company_id'] ?? 0;
 
 $stmt = $conn->prepare("SELECT r.request_id, r.device_type, r.quantity, r.device_condition, r.address, r.pickup_date,
+                               r.final_value,
                                u.name AS customer_name
                         FROM requests r
                         JOIN users u ON r.user_id = u.user_id
@@ -91,6 +92,7 @@ $total_recycled = $stats_result['total_recycled'] ?? 0;
                             <th>Condition</th>
                             <th>Address</th>
                             <th>Completed Date</th>
+                            <th>Final Value</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -104,11 +106,13 @@ $total_recycled = $stats_result['total_recycled'] ?? 0;
                             <td><?php echo htmlspecialchars($row['device_condition']); ?></td>
                             <td><?php echo htmlspecialchars($row['address']); ?></td>
                             <td><?php echo date("M d, Y", strtotime($row['pickup_date'])); ?></td>
+                            <td><?php echo $row['final_value'] ? 'BDT ' . htmlspecialchars($row['final_value']) : 'N/A'; ?>
+                            </td>
                         </tr>
                         <?php endwhile; ?>
                         <?php else: ?>
                         <tr>
-                            <td colspan="7">No completed pickups found.</td>
+                            <td colspan="8">No completed pickups found.</td>
                         </tr>
                         <?php endif; ?>
                     </tbody>

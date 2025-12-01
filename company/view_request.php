@@ -125,6 +125,12 @@ $request = $result->fetch_assoc();
                         <label><i class="fas fa-phone-alt"></i> Contact Number</label>
                         <div class="value"><?php echo htmlspecialchars($request['contact']); ?></div>
                     </div>
+                    <div class="info-item">
+                        <label><i class="fas fa-hand-holding-usd"></i> Estimated Value</label>
+                        <div class="value">
+                            <?php echo $request['estimated_value'] ? 'BDT ' . htmlspecialchars($request['estimated_value']) : 'N/A'; ?>
+                        </div>
+                    </div>
                     <div class="info-item" style="grid-column: 1 / -1;">
                         <label><i class="fas fa-map-marker-alt"></i> Pickup Address</label>
                         <div class="value"><?php echo htmlspecialchars($request['address']); ?></div>
