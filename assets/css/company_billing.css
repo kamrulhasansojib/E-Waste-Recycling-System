@@ -1,0 +1,229 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background: #f5f7fa;
+  color: #065f46;
+}
+
+.sidebar {
+  width: 260px;
+  background: linear-gradient(180deg, #065f46 0%, #059669 100%);
+  color: white;
+  position: fixed;
+  height: 100vh;
+  left: 0;
+  top: 0;
+  box-shadow: 4px 0 15px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+}
+
+.logo {
+  text-align: center;
+  padding: 30px 20px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  background: rgba(0, 0, 0, 0.1);
+}
+
+.logo i {
+  font-size: 40px;
+  margin-bottom: 10px;
+  color: #10b981;
+}
+
+.logo h2 {
+  font-size: 26px;
+  letter-spacing: 3px;
+  font-weight: 700;
+  margin-bottom: 5px;
+}
+
+.admin-badge {
+  display: inline-block;
+  background: rgba(255, 255, 255, 0.2);
+  padding: 4px 12px;
+  border-radius: 12px;
+  font-size: 11px;
+  margin-top: 5px;
+}
+
+.nav-menu {
+  padding: 20px 0;
+}
+
+.nav-menu a {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  color: rgba(255, 255, 255, 0.9);
+  text-decoration: none;
+  padding: 16px 25px;
+  transition: all 0.3s ease;
+  font-size: 18px;
+  font-weight: 500;
+  border-left: 4px solid transparent;
+}
+
+.nav-menu a i {
+  font-size: 18px;
+  width: 25px;
+  text-align: center;
+}
+
+.nav-menu a:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-left-color: #10b981;
+  padding-left: 30px;
+}
+
+.nav-menu a.active {
+  background: rgba(255, 255, 255, 0.15);
+  border-left-color: #10b981;
+  font-weight: 600;
+}
+
+.logout-btn {
+  position: absolute;
+  bottom: 20px;
+  width: calc(100% - 40px);
+  margin: 0 20px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 8px;
+  justify-content: center;
+}
+
+.logout-btn:hover {
+  background: rgba(239, 68, 68, 0.2);
+  border-color: #ef4444;
+  padding-left: 25px;
+}
+
+.main {
+  margin-left: 260px;
+  padding: 30px 40px;
+  min-height: 100vh;
+}
+
+.billing-header {
+  background: linear-gradient(180deg, #065f46 0%, #059669 100%);
+  padding: 30px;
+  border-radius: 15px;
+  color: white;
+  margin-bottom: 30px;
+}
+
+.billing-header h1 {
+  margin: 0 0 10px 0;
+  font-size: 32px;
+}
+
+.billing-header p {
+  margin: 0;
+  opacity: 0.9;
+}
+
+.companies-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  gap: 20px;
+  margin-bottom: 30px;
+}
+
+.company-card {
+  background: white;
+  border-radius: 15px;
+  padding: 25px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.company-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+}
+
+.company-card h3 {
+  margin: 0 0 15px 0;
+  color: #2c3e50;
+  font-size: 22px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.company-card .company-info {
+  margin-bottom: 20px;
+  color: #666;
+}
+
+.company-card .company-info p {
+  margin: 8px 0;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 14px;
+}
+
+.billing-summary {
+  background: #f8f9fa;
+  padding: 15px;
+  border-radius: 10px;
+  margin-top: 15px;
+}
+
+.billing-summary .billing-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 8px 0;
+  border-bottom: 1px solid #dee2e6;
+}
+
+.billing-summary .billing-row:last-child {
+  border-bottom: none;
+  font-weight: bold;
+  font-size: 18px;
+  color: #9b59b6;
+  margin-top: 5px;
+  padding-top: 12px;
+  border-top: 2px solid #9b59b6;
+}
+
+.view-details-btn {
+  width: 100%;
+  padding: 12px;
+  background: linear-gradient(180deg, #065f46 0%, #059669 100%);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: transform 0.2s;
+  margin-top: 15px;
+  text-align: center;
+  text-decoration: none;
+  display: block;
+}
+
+.view-details-btn:hover {
+  transform: scale(1.02);
+  color: white;
+}
+
+.no-companies {
+  text-align: center;
+  padding: 60px;
+  background: white;
+  border-radius: 15px;
+  color: #999;
+  grid-column: 1 / -1;
+}
+
+.no-companies i {
+  font-size: 64px;
+  margin-bottom: 20px;
+  color: #ddd;
+}
