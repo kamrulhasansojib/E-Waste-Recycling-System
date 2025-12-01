@@ -45,6 +45,7 @@ $result = $stmt->get_result();
                 <a href="../user/user_dashboard.php"><i class="fas fa-home"></i> Dashboard</a>
                 <a href="../user/requestform.php"><i class="fas fa-file-alt"></i> My Submissions</a>
                 <a href="../user/nearby_companies.php"><i class="fas fa-building"></i> Nearby Companies</a>
+                <a href="../user/achievements.php"><i class="fas fa-trophy"></i> Achievements</a>
                 <a href="../user/user_history.php" class="active"><i class=" fas fa-history"></i> All History</a>
                 <a href="../user/user_settings.php"><i class="fas fa-cogs"></i> Settings</a>
                 <a href="../auth/logout.php"><i class="fas fa-sign-out-alt"></i> Logout</a>
@@ -59,7 +60,6 @@ $result = $stmt->get_result();
 
                 <?php if($result->num_rows > 0): ?>
                 <?php while($row = $result->fetch_assoc()): ?>
-
                 <div class="history-card">
                     <div class="card-header">
                         <span class="req-id">#REQ-<?php echo $row['request_id']; ?></span>
@@ -69,34 +69,38 @@ $result = $stmt->get_result();
                     </div>
 
                     <div class="card-body">
-                        <p><strong>Company:</strong>
-                            <?php echo $row['company_name'] ?? 'N/A'; ?>
-                        </p>
+                        <div class="card-content-wrapper">
+                            <div class="card-details">
+                                <p><i class="fas fa-building"></i> <?php echo $row['company_name'] ?? 'N/A'; ?></p>
+                                <p><i class="fas fa-laptop"></i> <?php echo htmlspecialchars($row['device_type']); ?>
+                                </p>
+                                <p><i class="fas fa-map-marker-alt"></i>
+                                    <?php echo htmlspecialchars($row['address'] ?? 'N/A'); ?></p>
+                                <p><i class="fas fa-boxes"> </i> Quantity:
+                                    <?php echo htmlspecialchars($row['quantity']); ?></p>
 
-                        <p><strong>Device:</strong>
-                            <?php echo $row['device_type']; ?>
-                        </p>
+                                <p><i class="fas fa-clock"></i>
+                                    <?php echo date("M d, Y", strtotime($row['created_at'])); ?></p>
+                                <p><i class="fas fa-hand-holding-usd"></i>
+                                    <?php echo $row['estimated_value'] ? 'BDT '.htmlspecialchars($row['estimated_value']) : 'N/A'; ?>
+                                </p>
+                                <p><i class="fas fa-info-circle"></i> Condition:
+                                    <?php echo htmlspecialchars($row['device_condition']); ?></p>
+                            </div>
 
-                        <p><strong>Condition:</strong>
-                            <?php echo $row['device_condition']; ?>
-                        </p>
 
-                        <p><strong>Quantity:</strong>
-                            <?php echo $row['quantity']; ?>
-                        </p>
 
-                        <p><strong>Pickup Date:</strong>
-                            <?php echo date("M d, Y", strtotime($row['pickup_date'])); ?>
-                        </p>
-
-                        <p><strong>Requested On:</strong>
-                            <?php echo date("M d, Y", strtotime($row['created_at'])); ?>
-                        </p>
+                            <?php if(!empty($row['image'])): 
+                                    $image_path = '../assets/uploads/' . htmlspecialchars($row['image']);
+                                ?>
+                            <div class="item-image">
+                                <img src="<?php echo $image_path; ?>" alt="Device Image">
+                            </div>
+                            <?php endif; ?>
+                        </div>
                     </div>
                 </div>
-
                 <?php endwhile; ?>
-
                 <?php else: ?>
                 <p class="no-data">No request history found.</p>
                 <?php endif; ?>
