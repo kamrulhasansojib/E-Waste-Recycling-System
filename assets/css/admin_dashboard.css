@@ -509,3 +509,152 @@ tbody tr:last-child td {
     white-space: nowrap;
   }
 }
+
+.notification-bell {
+  position: relative;
+  cursor: pointer;
+  margin-left: 20px;
+}
+
+.notification-bell i {
+  color: #333;
+  font-size: 24px;
+  transition: color 0.3s ease;
+}
+
+.notification-bell:hover i {
+  color: #5a67d8;
+}
+
+.notification-bell .badge {
+  position: absolute;
+  top: -8px;
+  right: -10px;
+  background: #f44336;
+  color: #fff;
+  font-size: 11px;
+  font-weight: bold;
+  padding: 3px 6px;
+  border-radius: 50%;
+  min-width: 18px;
+  text-align: center;
+}
+
+#notif-bar {
+  position: fixed;
+  top: 0;
+  right: -100%;
+  width: 400px;
+  max-width: 90vw;
+  height: 100vh;
+  background: #fff;
+  box-shadow: -2px 0 10px rgba(0, 0, 0, 0.2);
+  overflow-y: auto;
+  transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 1000;
+  padding: 20px;
+}
+
+#notif-bar.show {
+  right: 0;
+}
+
+#notif-bar h3 {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  font-size: 20px;
+  color: #333;
+  border-bottom: 2px solid #5a67d8;
+  padding-bottom: 10px;
+}
+
+#notif-bar h3 .close-btn {
+  cursor: pointer;
+  font-size: 24px;
+  color: #555;
+  transition: color 0.2s;
+}
+
+#notif-bar h3 .close-btn:hover {
+  color: #f44336;
+}
+
+#notif-bar .notif-item {
+  border-bottom: 1px solid #eee;
+  padding: 15px 10px;
+  transition: background 0.2s;
+  border-left: 3px solid transparent;
+}
+
+#notif-bar .notif-item:hover {
+  background: #f9f9f9;
+  border-left-color: #5a67d8;
+}
+
+#notif-bar .notif-item:last-child {
+  border-bottom: none;
+}
+
+#notif-bar .notif-item .notif-msg {
+  color: #333;
+  font-size: 14px;
+  line-height: 1.5;
+  margin-bottom: 5px;
+}
+
+#notif-bar .notif-item small {
+  color: #888;
+  font-size: 12px;
+}
+
+#notif-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 999;
+  display: none;
+}
+
+#notif-overlay.show {
+  display: block;
+}
+
+.topbar-icons {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+#notif-bar::-webkit-scrollbar {
+  width: 6px;
+}
+
+#notif-bar::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+#notif-bar::-webkit-scrollbar-thumb {
+  background: #5a67d8;
+  border-radius: 3px;
+}
+
+#notif-bar::-webkit-scrollbar-thumb:hover {
+  background: #4c51bf;
+}
+
+.notif-empty {
+  text-align: center;
+  padding: 40px 20px;
+  color: #999;
+}
+
+.notif-empty i {
+  font-size: 48px;
+  margin-bottom: 10px;
+  color: #ddd;
+}

@@ -133,6 +133,7 @@ body {
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
   transition: all 0.3s ease;
   animation: fadeIn 0.5s ease;
+  border: 2px solid #0a8764;
 }
 
 .history-card:hover {
@@ -191,6 +192,7 @@ body {
 
 .card-body {
   padding: 25px;
+  background: linear-gradient(to bottom, #ffffff 0%, #fafafa 100%);
 }
 
 .card-body p {
@@ -243,4 +245,53 @@ body {
 .main-content::-webkit-scrollbar-thumb {
   background: rgba(0, 0, 0, 0.2);
   border-radius: 4px;
+}
+
+.card-content-wrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.card-details {
+  flex: 1 1 60%;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.card-details p {
+  margin: 0;
+  color: #333;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.card-details p i {
+  margin-right: 8px;
+  color: #065f46;
+  min-width: 20px;
+  text-align: center;
+}
+
+.item-image {
+  height: 200px;
+  width: 200px;
+  margin-right: 17px;
+  object-fit: cover;
+  border-radius: 8px;
+  border: 1px solid #e5e7eb;
+  flex-shrink: 0;
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.25);
+  align-self: center;
+}
+
+.item-image img {
+  height: 200px;
+  width: 200px;
+  border-radius: 8px;
+}
+
+.card-body p i.fa-hand-holding-usd {
+  color: #f59e0b;
 }

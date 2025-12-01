@@ -305,3 +305,122 @@ body {
   transform: translateY(-2px);
   box-shadow: 0 4px 12px rgba(37, 99, 235, 0.4);
 }
+.search-filter-bar form input[type="text"] {
+  padding: 6px 10px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  flex: 1;
+}
+
+.search-filter-bar form button {
+  padding: 6px 12px;
+  border: none;
+  background: #065f46;
+  color: #fff;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.search-filter-bar form button i {
+  margin-right: 0;
+}
+
+.card-content-wrapper {
+  display: flex;
+  justify-content: space-between;
+  gap: 15px;
+}
+
+.card-details {
+  flex-grow: 1;
+}
+
+.item-image {
+  align-self: center;
+  margin-right: 25px;
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 8px;
+  border: 1px solid #e5e7eb;
+  flex-shrink: 0;
+  margin-top: 10px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.card-body p i.fa-hand-holding-usd {
+  color: #f59e0b;
+}
+
+/* Modal */
+.modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  justify-content: center;
+  align-items: center;
+}
+.modal-content {
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  width: 300px;
+  text-align: center;
+}
+.modal-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 15px;
+}
+.btn-submit {
+  background: #064e3b;
+  color: white;
+  padding: 6px 15px;
+  border: none;
+  border-radius: 5px;
+}
+.btn-cancel {
+  background: #ef4444;
+  color: white;
+  padding: 6px 15px;
+  border: none;
+  border-radius: 5px;
+}
+
+#finalValueForm input {
+  margin-top: 5px;
+  padding: 5px 2px;
+  border: 2px solid #064e3b;
+  border-radius: 5px;
+}
+
+.btn-complete {
+  background: #3b82f6;
+  color: white;
+}
+.btn-view {
+  background: white;
+  border: 2px solid #065f46;
+  color: #065f46;
+}
+
+.btn-view {
+  padding: 7px 18px;
+  border: 2px solid #065f46;
+  background: white;
+  color: #065f46;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: none;
+  transition: 0.3s;
+}
+.btn-view:hover {
+  background: #065f46;
+  color: #fff;
+}
