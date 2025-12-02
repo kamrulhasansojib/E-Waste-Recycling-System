@@ -34,6 +34,7 @@
                 <i class="fas fa-recycle"></i>
                 <span>E-Waste Items</span>
             </a>
+            <a href="../admin/company_billing.php"><i class="fas fa-file-invoice-dollar"></i>Company Billing</a>
             <a href="../admin/admin_settings.php" class="active">
                 <i class="fas fa-cogs"></i>
                 <span>Settings</span>

@@ -58,6 +58,7 @@ $items = mysqli_query($conn, $query);
             <a href="../admin/users.php"><i class="fas fa-users"></i><span>Users</span></a>
             <a href="../admin/companies.php"><i class="fas fa-building"></i><span>Companies</span></a>
             <a href="../admin/items.php" class="active"><i class="fas fa-recycle"></i><span>E-Waste Items</span></a>
+            <a href="../admin/company_billing.php"><i class="fas fa-file-invoice-dollar"></i>Company Billing</a>
             <a href="../admin/admin_settings.php"><i class="fas fa-cogs"></i><span>Settings</span></a>
             <a href="../auth/logout.php" class="logout-btn"><i class="fas fa-sign-out-alt"></i><span>Logout</span></a>
         </nav>

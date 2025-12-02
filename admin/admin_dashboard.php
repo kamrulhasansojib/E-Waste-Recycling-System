@@ -115,7 +115,7 @@ $companies_result = $conn->query("
             <a href="../admin/users.php"><i class="fas fa-users"></i> Users</a>
             <a href="../admin/companies.php"><i class="fas fa-building"></i> Companies</a>
             <a href="../admin/items.php"><i class="fas fa-recycle"></i> E-Waste Items</a>
-            <a href="../admin/company_billing.php"><i class="fas fa-file-invoice-dollar"></i> Billing</a>
+            <a href="../admin/company_billing.php"><i class="fas fa-file-invoice-dollar"></i>Company Billing</a>
             <a href="../admin/admin_settings.php"><i class="fas fa-cogs"></i> Settings</a>
             <a href="../auth/logout.php" class="logout-btn"><i class="fas fa-sign-out-alt"></i> Logout</a>
         </nav>
