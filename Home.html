@@ -31,7 +31,7 @@
       <div class="hero-content">
         <h1>Join Our Green Initiative</h1>
         <p>
-          Let’s make waste recycling easy and impactful. Reduce pollution, save
+          Let's make waste recycling easy and impactful. Reduce pollution, save
           resources, and build a greener future together.
         </p>
         <button class="btn">Join the Movement</button>
@@ -359,11 +359,30 @@
             <h2>Contact Us</h2>
             <p class="subtitle">Reach out to us for any inquiry</p>
 
-            <form class="contact-form">
-              <input type="text" placeholder="Full name" required />
-              <input type="email" placeholder="Your email" required />
-              <textarea placeholder="Message" rows="4"></textarea>
-              <button type="submit" class="submit-btn">SUBMIT</button>
+            <div id="formAlert" class="form-alert"></div>
+
+            <form class="contact-form" id="contactForm">
+              <input
+                type="text"
+                name="from_name"
+                placeholder="Full name"
+                required
+              />
+              <input
+                type="email"
+                name="from_email"
+                placeholder="Your email"
+                required
+              />
+              <textarea
+                name="message"
+                placeholder="Message"
+                rows="4"
+                required
+              ></textarea>
+              <button type="submit" class="submit-btn" id="submitBtn">
+                SUBMIT
+              </button>
             </form>
           </div>
 
@@ -398,7 +417,7 @@
           <div class="info-item">
             <i class="fas fa-envelope"></i>
             <p>Email:</p>
-            <span>eteverecycle@.com</span>
+            <span>eteverecycle@gmail.com</span>
           </div>
           <div class="info-item">
             <i class="fas fa-phone-alt"></i>
@@ -430,7 +449,7 @@
 
         <div class="footer-section">
           <h4>Contact</h4>
-          <p>Email: etrive@gamil.com</p>
+          <p>Email: etrive@gmail.com</p>
           <p>Phone: +880 1234-567890</p>
           <p>Mohammadpur, Dhaka</p>
         </div>
@@ -449,5 +468,9 @@
         <p>© 2025 E-Waste Recycling. All rights reserved.</p>
       </div>
     </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+
+    <script src="assets/js/contact.js"></script>
   </body>
 </html>
