@@ -56,6 +56,7 @@ $company = $result->fetch_assoc();
                 <a href="../company/requests.php"><i class="fas fa-inbox"></i> Requests</a></li>
                 <a href="../company/completed.php"><i class="fas fa-check-circle"></i> Completed</a>
                 <a href="#" class="active"><i class="fas fa-cogs"></i> Settings</a>
+                <a href="../company/terms_conditions.php"><i class="fas fa-file-contract"></i> T&C</a>
                 <a href="../auth/logout.php"><i class="fas fa-sign-out-alt"></i> Logout</a>
             </nav>
         </aside>

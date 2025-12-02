@@ -56,6 +56,7 @@ $total_recycled = $stats_result['total_recycled'] ?? 0;
                 <a href="../company/requests.php"><i class="fas fa-inbox"></i> Requests</a>
                 <a href="../company/completed.php" class="active"><i class="fas fa-check-circle"></i> Completed</a>
                 <a href="../company/company_settings.php"><i class="fas fa-cogs"></i> Settings</a>
+                <a href="../company/terms_conditions.php"><i class="fas fa-file-contract"></i> T&C</a>
                 <a href="../auth/logout.php"><i class="fas fa-sign-out-alt"></i> Logout</a>
             </nav>
         </aside>
