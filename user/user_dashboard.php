@@ -26,7 +26,14 @@ $stmt_accepted = $conn->prepare("
            c.company_name
     FROM requests r
     LEFT JOIN companies c ON r.company_id = c.company_id
-    WHERE r.user_id = ? AND r.status = 'Accepted'
+    WHERE r.user_id = ? 
+    AND r.status = 'Accepted'
+    AND NOT EXISTS (
+        SELECT 1 FROM notifications n 
+        WHERE n.company_id = r.company_id 
+        AND n.message LIKE CONCAT('%request #', r.request_id, '%')
+        AND n.message LIKE '%confirmed the pickup%'
+    )
     ORDER BY r.created_at DESC
 ");
 $stmt_accepted->bind_param("i", $user_id);
