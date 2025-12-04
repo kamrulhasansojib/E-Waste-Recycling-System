@@ -1,6 +1,7 @@
 <?php
     session_start();
     require "../database/connection.php";
+    require_once "../classes/User.php";
 
     if(!isset($_SESSION['user_id'])){
         echo "<p class='error-msg'>Please login first!</p>";
@@ -8,6 +9,7 @@
     }
 
     $user_id = $_SESSION['user_id'];
+    $user = new User($conn);
 
     if(isset($_POST['update_profile'])){
         $name = $_POST['name'];
@@ -15,14 +17,12 @@
         $phone = $_POST['phone'];
         $address = $_POST['address'];
 
-        $sql = "UPDATE users SET name=?, email=?, phone=?, address=? WHERE user_id=?";
-        $stmt = $conn->prepare($sql);
-        $stmt->bind_param("ssssi", $name, $email, $phone, $address, $user_id);
-
-        if($stmt->execute()){
-            echo "<p class='success-msg'>Profile updated successfully!</p>";
+        $result = $user->updateProfile($user_id, $name, $email, $phone, $address);
+        
+        if($result['success']){
+            echo "<p class='success-msg'>{$result['message']}</p>";
         } else {
-            echo "<p class='error-msg'>Failed to update profile.</p>";
+            echo "<p class='error-msg'>{$result['message']}</p>";
         }
         exit;
     }
@@ -32,29 +32,13 @@
         $new = $_POST['new_pass'];
         $confirm = $_POST['confirm_pass'];
 
-        $sql = "SELECT password FROM users WHERE user_id=?";
-        $stmt = $conn->prepare($sql);
-        $stmt->bind_param("i", $user_id);
-        $stmt->execute();
-        $stored_pass = $stmt->get_result()->fetch_assoc()['password'];
-
-        if(!password_verify($current, $stored_pass)){
-            echo "<p class='error-msg'>Current password is incorrect!</p>";
-            exit;
+        $result = $user->updatePassword($user_id, $current, $new, $confirm);
+        
+        if($result['success']){
+            echo "<p class='success-msg'>{$result['message']}</p>";
+        } else {
+            echo "<p class='error-msg'>{$result['message']}</p>";
         }
-
-        if($new !== $confirm){
-            echo "<p class='error-msg'>New passwords do not match!</p>";
-            exit;
-        }
-
-        $hashed = password_hash($new, PASSWORD_DEFAULT);
-        $update = "UPDATE users SET password=? WHERE user_id=?";
-        $stmt2 = $conn->prepare($update);
-        $stmt2->bind_param("si", $hashed, $user_id);
-        $stmt2->execute();
-
-        echo "<p class='success-msg'>Password updated successfully!</p>";
         exit;
     }
 ?>

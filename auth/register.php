@@ -18,7 +18,7 @@
                 <p>Already have an account?</p>
                 <button class="btn-register"><a href="login.php">Login</a></button>
             </div>
-            <a href="../Home.html" class="back-btn"><i class="fa-solid fa-house"></i></a>
+            <a href="../index.html" class="back-btn"><i class="fa-solid fa-house"></i></a>
             <div class="socials">
                 <a class="button"><i class="fab fa-google"></i></a>
                 <a class="button"><i class="fab fa-facebook-f"></i></a>

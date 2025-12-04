@@ -114,7 +114,7 @@ if($res_notif->num_rows > 0){
                 <a href="../user/user_settings.php"><i class="fas fa-cogs"></i> Settings</a>
                 <a href="../auth/logout.php"><i class="fas fa-sign-out-alt"></i> Logout</a>
             </nav>
-            <a href="../Home.html" class="back-btn"><i class="fa-solid fa-house"></i></a>
+            <a href="../index.html" class="back-btn"><i class="fa-solid fa-house"></i></a>
         </aside>
 
         <main class="main-content">

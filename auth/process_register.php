@@ -1,6 +1,8 @@
 <?php
     session_start();
     include '../database/connection.php';
+    require_once '../classes/User.php';
+    require_once '../classes/Company.php';
 
     if($_SERVER["REQUEST_METHOD"] == "POST"){
 
@@ -8,32 +10,30 @@
         $email = $_POST['email'];
         $role = $_POST['role'];
         $address = $_POST['address'];
-        $password = password_hash($_POST['password'], PASSWORD_BCRYPT);
-
-        if(empty($name) || empty($email) || empty($password)){
-            $_SESSION['reg_error'] = "Fill all required fields";
-            header("Location: register.php");
-            exit;
-        }
+        $password = $_POST['password'];
 
         if($role == "user"){
-            $sql = "INSERT INTO users (name,email,role,address,password) VALUES (?,?,?,?,?)";
-            $stmt = $conn->prepare($sql);
-            $stmt->bind_param("sssss",$name,$email,$role,$address,$password);
+            $user = new User($conn);
+            $result = $user->register($name, $email, $password, $role, $address);
+            
+            if($result['success']){
+                $_SESSION['reg_success'] = $result['message'];
+            } else {
+                $_SESSION['reg_error'] = $result['message'];
+            }
+
         } else {
             $motto = isset($_POST['companyName']) ? $_POST['companyName'] : NULL;
-            $sql = "INSERT INTO companies (company_name,email,password,motto,address) VALUES (?,?,?,?,?)";
-            $stmt = $conn->prepare($sql);
-            $stmt->bind_param("sssss",$name,$email,$password,$motto,$address);
+            $company = new Company($conn);
+            $result = $company->register($name, $email, $password, $motto, $address);
+            
+            if($result['success']){
+                $_SESSION['reg_success'] = $result['message'];
+            } else {
+                $_SESSION['reg_error'] = $result['message'];
+            }
         }
 
-        if($stmt->execute()){
-            $_SESSION['reg_success'] = "Registration successful!";
-        } else {
-            $_SESSION['reg_error'] = "Email already exists or DB error";
-        }
-
-        $stmt->close();
         $conn->close();
         header("Location: register.php");
         exit;

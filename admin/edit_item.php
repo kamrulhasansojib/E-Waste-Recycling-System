@@ -1,6 +1,7 @@
 <?php
 session_start();
 include '../database/connection.php';
+include '../classes/Item.php'; 
 
 if(!isset($_SESSION['role']) || $_SESSION['role'] !== 'admin'){
     header("Location: ../auth/login.php");
@@ -29,15 +30,13 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
     $estimated_value = $_POST['estimated_value'];
     $priority_point = $_POST['priority_point']; 
 
-    $stmt = $conn->prepare("UPDATE items 
-        SET item_name=?, category=?, description=?, estimated_value=?, priority_point=? 
-        WHERE item_id=?");
-
-    $stmt->bind_param("ssssii", $name, $category, $description, $estimated_value, $priority_point, $item_id);
-    $stmt->execute();
-
-    header("Location: items.php");
-    exit;
+    $item_obj = new Item();
+    if ($item_obj->updateItem($item_id, $name, $category, $description, $estimated_value, $priority_point)) {
+        header("Location: items.php");
+        exit;
+    } else {
+        echo "Error updating item!";
+    }
 }
 ?>
 

@@ -1,6 +1,7 @@
 <?php
 session_start();
 include '../database/connection.php';
+include '../classes/Item.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $item_name = $_POST['item_name'];
@@ -9,18 +10,23 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $estimated_value = !empty($_POST['estimated_value']) ? $_POST['estimated_value'] : null;
     $priority_point = !empty($_POST['priority_point']) ? intval($_POST['priority_point']) : null;
 
-    $stmt = $conn->prepare("INSERT INTO items (item_name, category, description, estimated_value, priority_point) VALUES (?, ?, ?, ?, ?)");
-    $stmt->bind_param("ssssi", $item_name, $category, $description, $estimated_value, $priority_point);
-    $stmt->execute();
-    header("Location: items.php");
-    exit;
+    $item = new Item();
+    if ($item->addItem($item_name, $category, $description, $estimated_value, $priority_point)) {
+        header("Location: items.php");
+        exit;
+    } else {
+        echo "Error adding item!";
+    }
 }
 
 if (isset($_GET['delete'])) {
     $delete_id = intval($_GET['delete']);
-    mysqli_query($conn, "DELETE FROM items WHERE item_id = $delete_id");
-    header("Location: items.php");
-    exit;
+    
+    $item = new Item();
+    if ($item->deleteItem($delete_id)) {
+        header("Location: items.php");
+        exit;
+    }
 }
 
 $search = "";

@@ -34,7 +34,7 @@ if(isset($_SESSION['role'])){
                     <a href="register.php">Register</a>
                 </button>
             </div>
-            <a href="../Home.html" class="back-btn">
+            <a href="../index.html" class="back-btn">
                 <i class="fa-solid fa-house"></i>
             </a>
         </section>
