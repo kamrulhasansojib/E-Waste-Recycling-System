@@ -74,3 +74,7 @@ function resetButton() {
 function scrollToForm() {
   contactForm.scrollIntoView({ behavior: "smooth", block: "center" });
 }
+
+function toggleMenu() {
+  document.getElementById("navMenu").classList.toggle("active");
+}

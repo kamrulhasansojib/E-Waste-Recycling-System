@@ -11,3 +11,7 @@ next.addEventListener("click", () => {
 prev.addEventListener("click", () => {
   slider.scrollBy({ left: -300, behavior: "smooth" });
 });
+
+function toggleMenu() {
+  document.getElementById("navMenu").classList.toggle("active");
+}

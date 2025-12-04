@@ -192,3 +192,95 @@ body {
 .back-btn:hover {
   transform: translateY(-3px);
 }
+
+@media (max-width: 768px) {
+  body {
+    align-items: flex-start;
+    height: auto;
+    padding: 20px 0;
+  }
+
+  .card {
+    flex-direction: column-reverse;
+    width: 90%;
+    height: auto;
+    margin-top: 20px;
+  }
+
+  .left,
+  .right {
+    width: 100%;
+    border-radius: 0;
+    padding: 30px 20px;
+  }
+
+  .left {
+    order: 2;
+    text-align: center;
+    padding: 20px;
+  }
+
+  .right {
+    order: 1;
+    padding: 20px;
+    padding-bottom: 40px;
+  }
+
+  .right .fa-user,
+  .fa-lock {
+    display: none;
+  }
+
+  .left h1 {
+    font-size: 28px;
+    font-weight: 600;
+    margin-top: 30px;
+  }
+  .left p {
+    font-size: 14px;
+    margin-bottom: 15px;
+  }
+
+  .btn-register {
+    margin-bottom: 30px;
+  }
+
+  .field input {
+    padding: 12px 40px 12px 15px;
+  }
+
+  .socials {
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+
+  .socials .button {
+    width: 35px;
+    height: 35px;
+    font-size: 18px;
+  }
+
+  .back-btn {
+    top: 10px;
+    left: 10px;
+    font-size: 18px;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  .card {
+    width: 700px;
+    height: auto;
+    flex-direction: row;
+  }
+
+  .left {
+    width: 40%;
+    padding: 30px 20px;
+  }
+
+  .right {
+    width: 60%;
+    padding: 40px 30px;
+  }
+}

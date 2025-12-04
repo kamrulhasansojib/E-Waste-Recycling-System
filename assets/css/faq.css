@@ -343,3 +343,149 @@ header {
   padding-top: 10px;
   opacity: 0.8;
 }
+
+.menu-icon {
+  font-size: 26px;
+  color: #fff;
+  display: none;
+  cursor: pointer;
+}
+
+@media (max-width: 850px) {
+  .nav-items {
+    position: absolute;
+    top: 60px;
+    right: -100%;
+    width: 250px;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(10px);
+    flex-direction: column;
+    padding-top: 40px;
+    gap: 30px;
+    transition: 0.4s ease;
+  }
+
+  .nav-items.active {
+    right: 0;
+  }
+
+  .nav-links {
+    flex-direction: column;
+    gap: 25px;
+  }
+
+  .menu-icon {
+    display: block;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero-content h1 {
+    font-size: 45px;
+  }
+
+  .faq-container {
+    width: 92%;
+    margin-top: 25px;
+  }
+
+  .faq-header h1 {
+    font-size: 30px;
+  }
+
+  .faq-header p {
+    font-size: 15px;
+  }
+
+  .faq-question {
+    padding: 18px 20px;
+  }
+
+  .faq-question-text {
+    gap: 12px;
+  }
+
+  .faq-question-text i {
+    font-size: 18px;
+  }
+
+  .faq-question h3 {
+    font-size: 16px;
+  }
+
+  .faq-toggle {
+    font-size: 20px;
+  }
+
+  .faq-item.active .faq-answer {
+    padding: 0 20px 20px 20px;
+  }
+
+  .faq-answer p {
+    font-size: 14px;
+    padding-left: 28px;
+    line-height: 1.6;
+  }
+
+  .contact-section {
+    padding: 30px 18px;
+  }
+
+  .contact-section h2 {
+    font-size: 22px;
+  }
+
+  .contact-section p {
+    font-size: 14px;
+  }
+
+  .contact-btn {
+    padding: 12px 26px;
+    font-size: 15px;
+  }
+
+  .footer {
+    padding: 30px 15px 10px;
+  }
+
+  .footer-container {
+    grid-template-columns: 1fr;
+    gap: 25px;
+    text-align: center;
+  }
+
+  .footer-section ul li a:hover {
+    margin-left: 0;
+  }
+
+  .social-links {
+    justify-content: center;
+  }
+
+  .form-alert {
+    font-size: 13px;
+    padding: 12px 15px;
+  }
+  .faq-question-text h3 {
+    font-size: 17px;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-content h1 {
+    font-size: 38px;
+  }
+
+  .faq-question {
+    padding: 16px 16px;
+  }
+
+  .faq-question-text h3 {
+    font-size: 15px;
+  }
+
+  .faq-answer p {
+    font-size: 13px;
+  }
+}
